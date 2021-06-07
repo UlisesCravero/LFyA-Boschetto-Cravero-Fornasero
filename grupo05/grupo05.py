@@ -2,7 +2,7 @@ import sys
 import ply.lex as lex
 import ply.yacc as yacc
 
-reserved = {
+reservados = {
     'SELECT':'SELECT',
     'FROM':'FROM',
     'WHERE':'WHERE',
@@ -29,7 +29,7 @@ reserved = {
     'DESC':'DESC',
 }
 
-All_tokens = list(reserved.values()) + [
+All_tokens = list(reservados.values()) + [
     'Igual', 
     'Desigual',
     'Mayor',
@@ -43,7 +43,9 @@ All_tokens = list(reserved.values()) + [
     'Coma',
     'Punto',
     'string',
-    'numero'
+    'numero',
+    'Comilla'
+    'Cadena'
     # Faltan declarar algunos de la expresion regular Por ejemplo (cadena, tabla)
 ]
 
@@ -59,12 +61,12 @@ t_Corchete_Izquierdo = r'\['
 t_Corchete_Derecho = r'\]'
 t_Coma = r'\,'
 t_Punto = r'\.'
-
+r_Comilla = r'\''
 t_Ignorar = ' \t'
 
 def t_string(t):
     r'\w'     #chequear si necesita una expresion regular mas acotada. \w adminte cualquier caracter
-    t.type = reserved.get(t.value, 'string'.lower)  #por si viene en mayuscula (CONTROLAR QUE FUNCIONE)
+    t.type = reservados.get(t.value, 'string'.lower)  #por si viene en mayuscula (CONTROLAR QUE FUNCIONE)
     return t
 
 def t_numero(t):
@@ -79,6 +81,33 @@ def t_newline(t):
 def t_error(t):
     print("Lex error. Character '%s' is not valid" % t.value[0])
     t.lexer.skip(1)
+
+def t_Cadena(t):
+    r'[a-zA-Z_][a-zA-Z0-9_]*'   # revisar expresion regular
+    t.type = reservados.get(t.value, 'CADENA')
+    return t
+
+# LISTA 
+lista = {}
+
+def p_signos(p):
+    '''SIGNO: Igual | Desigual | Mayor | Menor | Mayor_Igual | Menor_Igual '''
+
+def p_QUERY(p):
+    '''QUERY :  SELECT FROM JOIN WHERE GROUP_BY ORDER_BY'''
+
+def p_SELECT(p):
+    '''SELECT | SELECT COLUMNAS
+              | SELECT DISTINCT COLUMNAS'''  # VER SI FALTA SELECT *
+
+def p_COLUMNAS(p):
+    '''COLUMNAS : COLUMNA
+                | COLUMNA COMA COLUMNAS'''
+
+def p_COLUMNA(p):
+    '''COLUMNA : Cadena Punto Cadena
+               | '''
+
 
 query = "INTRODUCIR QUERY A EVALUAR"
 
