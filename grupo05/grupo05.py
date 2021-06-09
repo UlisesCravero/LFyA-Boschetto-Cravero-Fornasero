@@ -13,6 +13,7 @@ reservados = {
     'AS':'AS',
     'MIN':'MIN',
     'MAX':'MAX',
+    'AVG': 'AVG',
     'COUNT':'COUNT',
     'DISTINCT':'DISTINCT',
     'INNER':'INNER',
@@ -84,11 +85,21 @@ def t_error(t):
 
 def t_Cadena(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'   # revisar expresion regular
-    t.type = reservados.get(t.value, 'CADENA')
+    t.type = reservados.get(t.value, 'Cadena')
     return t
 
 # LISTA 
-lista = {}
+listaColumnas = {} # para identificar las columnas 
+listaTablas = {} # para identificar las tablas
+
+def p_Fun_Res(p):
+    '''Fun_Res : MAX Parentesis_Izquierdo COLUMNA Parentesis_Derecho
+               | MIN Parentesis_Izquierdo COLUMNA Parentesis_Derecho
+               | COUNT Parentesis_Izquierdo COLUMNA Parentesis_Derecho
+               | COUNT Parentesis_Izquierdo DISTINCT COLUMNA Parentesis_Derecho'''
+
+               # CONTEMPLA EL ASTERISCO? AL PARECER NO HAY QUE HACER AVG
+               #| AVG Parentesis_Izquierdo COLUMNA Parentesis_Derecho 
 
 def p_signos(p):
     '''SIGNO: Igual | Desigual | Mayor | Menor | Mayor_Igual | Menor_Igual '''
@@ -102,14 +113,45 @@ def p_SELECT(p):
 
 def p_COLUMNAS(p):
     '''COLUMNAS : COLUMNA
-                | COLUMNA COMA COLUMNAS'''
+                | COLUMNA Coma COLUMNAS'''
 
 def p_COLUMNA(p):
     '''COLUMNA : Cadena Punto Cadena
-               | '''
+               | Cadena Punto Cadena AS Comilla Cadena Comilla
+               | Fun_Res AS Comilla Cadena Comilla'''
+    key = p[3]
+    if len(p) != 6:
+        if key not in listaColumnas:
+            listaColumnas[key].append(key)
+
+def p_TABLAS(p):
+    '''TABLAS : Cadena AS Cadena
+              | Cadena
+              | TABLAS Cadena AS Cadena
+              | TABLAS Cadena'''
+    if len(p) == 2:
+        listaTablas[p[1]] = p[1]
+    if len(p) == 3:
+        listaTablas[p[2]] = p[2]
+    if len(p) == 4:
+        listaTablas[p[1]] = p[3]
+    if len(p) == 5:
+        listaTablas[p[2]] = p[4]
+
+def p_FROM(p):
+    '''FROM : FROM TABLAS'''
+
+def p_WHERE(p):
+    '''WHERE: WHERE CONDICION'''
+
+def p_CONDICION(p):
+    '''CONDICION :  '''
+
+def p_INNER_JOIN(p):
+    ''' '''
 
 
-query = "INTRODUCIR QUERY A EVALUAR"
+query = "SELECT p.nombre , p.edad FROM PERSONA p, CUENTA cu WHERE "
 
 lexer = lex.lex()
 lexer.input(query)
