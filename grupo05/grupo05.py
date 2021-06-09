@@ -109,7 +109,8 @@ def p_QUERY(p):
 
 def p_SELECT(p):
     '''SELECT | SELECT COLUMNAS
-              | SELECT DISTINCT COLUMNAS'''  # VER SI FALTA SELECT *
+              | SELECT DISTINCT COLUMNAS
+              | SELECT Fun_Res AS Comilla Cadena Comilla'''  # VER SI FALTA SELECT *
 
 def p_COLUMNAS(p):
     '''COLUMNAS : COLUMNA
@@ -117,12 +118,10 @@ def p_COLUMNAS(p):
 
 def p_COLUMNA(p):
     '''COLUMNA : Cadena Punto Cadena
-               | Cadena Punto Cadena AS Comilla Cadena Comilla
-               | Fun_Res AS Comilla Cadena Comilla'''
+               | Cadena Punto Cadena AS Comilla Cadena Comilla'''
     key = p[3]
-    if len(p) != 6:
-        if key not in listaColumnas:
-            listaColumnas[key].append(key)
+    if key not in listaColumnas:
+        listaColumnas[key].append(key)
 
 def p_TABLAS(p):
     '''TABLAS : Cadena AS Cadena
@@ -144,8 +143,9 @@ def p_FROM(p):
 def p_WHERE(p):
     '''WHERE: WHERE CONDICION'''
 
-def p_CONDICION(p):
-    '''CONDICION :  '''
+def p_CONDICION(p):              # CAMBIAR EL ALGO
+    '''CONDICION : COLUMNA signos ALGO  
+                 | COLUMNA signos COLUMNA''' 
 
 def p_INNER_JOIN(p):
     ''' '''
