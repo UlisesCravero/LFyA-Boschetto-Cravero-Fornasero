@@ -143,9 +143,16 @@ def p_FROM(p):
 def p_WHERE(p):
     '''WHERE: WHERE CONDICION'''
 
+def p_GROUP_BY(p):
+    '''GROUP_BY : COLUMNAS'''
+
 def p_CONDICION(p):              # CAMBIAR EL ALGO
     '''CONDICION : COLUMNA signos ALGO  
-                 | COLUMNA signos COLUMNA''' 
+                 | COLUMNA signos COLUMNA'''
+
+def p_ALGO(): # cambiar nombre
+    '''ALGO : numero
+            | Cadena''' 
 
 def p_INNER_JOIN(p):
     ''' '''
