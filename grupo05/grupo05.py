@@ -45,8 +45,9 @@ All_tokens = list(reservados.values()) + [
     'Punto',
     'string',
     'numero',
-    'Comilla'
-    'Cadena'
+    'Comilla',
+    'Cadena',
+    'Columna',
     # Faltan declarar algunos de la expresion regular Por ejemplo (cadena, tabla)
 ]
 
@@ -99,7 +100,7 @@ def p_Fun_Res(p):
                | COUNT Parentesis_Izquierdo DISTINCT COLUMNA Parentesis_Derecho'''
 
                # CONTEMPLA EL ASTERISCO? AL PARECER NO HAY QUE HACER AVG
-               #| AVG Parentesis_Izquierdo COLUMNA Parentesis_Derecho 
+               # Falta el AS 'MI VERGA'
 
 def p_signos(p):
     '''SIGNO: Igual | Desigual | Mayor | Menor | Mayor_Igual | Menor_Igual '''
@@ -110,7 +111,7 @@ def p_QUERY(p):
 def p_SELECT(p):
     '''SELECT | SELECT COLUMNAS
               | SELECT DISTINCT COLUMNAS
-              | SELECT Fun_Res AS Comilla Cadena Comilla'''  # VER SI FALTA SELECT *
+              | SELECT Fun_Res AS Comilla Cadena Comilla''' 
 
 def p_COLUMNAS(p):
     '''COLUMNAS : COLUMNA
@@ -138,24 +139,48 @@ def p_TABLAS(p):
         listaTablas[p[2]] = p[4]
 
 def p_FROM(p):
-    '''FROM : FROM TABLAS'''
+    '''FROM : FROM TABLAS
+            | FROM TABLAS INNER_JOIN '''
 
 def p_WHERE(p):
     '''WHERE: WHERE CONDICION'''
 
 def p_GROUP_BY(p):
-    '''GROUP_BY : COLUMNAS'''
+    '''GROUP_BY : GROUP BY COLUMNAS
+                | GROUP BY COLUMNAS HAVING'''
+
+def p_HAVING(p):
+    '''HAVING : HAVING CONDICION'''
+
+def p_ORDER_BY(p):
+    '''ORDER_BY : ORDER BY Cadena DESC
+                | ORDER BY Cadena ASC
+                | ORDER BY Cadena'''
 
 def p_CONDICION(p):              # CAMBIAR EL ALGO
     '''CONDICION : COLUMNA signos ALGO  
-                 | COLUMNA signos COLUMNA'''
+                 | COLUMNA signos COLUMNA
+                 | COLUMNA signos ALGO AND CONDICION
+                 | COLUMNA signos COLUMNA AND CONDICION
+                 | COLUMNA signos ALGO OR CONDICION
+                 | COLUMNA signos COLUMNA OR CONDICION'''
 
 def p_ALGO(): # cambiar nombre
     '''ALGO : numero
-            | Cadena''' 
+            | Comilla Cadena Comilla''' 
+            #contemplar si esta igualado a una fecha
 
 def p_INNER_JOIN(p):
-    ''' '''
+    '''INNER_JOIN : INNER JOIN TABLA ON CONDICION
+                  | INNER JOIN TABLA ON CONDICION INNER JOIN
+                  | INNER JOIN TABLA ON CONDICION WHERE'''
+
+
+def p_LEFT_JOIN(p):
+    '''LEFT_JOIN : LEFT JOIN TABLA ON CONDICION
+                 | LEFT JOIN TABLA ON CONDICION LEFT JOIN
+                 | LEFT JOIN TABLA ON CONDICION WHERE'''
+
 
 
 query = "SELECT p.nombre , p.edad FROM PERSONA p, CUENTA cu WHERE "
