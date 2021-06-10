@@ -100,7 +100,7 @@ def p_Fun_Res(p):
                | COUNT Parentesis_Izquierdo DISTINCT COLUMNA Parentesis_Derecho'''
 
                # CONTEMPLA EL ASTERISCO? AL PARECER NO HAY QUE HACER AVG
-               # Falta el AS 'MI VERGA'
+               # Falta el AS 'algo'
 
 def p_signos(p):
     '''SIGNO: Igual | Desigual | Mayor | Menor | Mayor_Igual | Menor_Igual '''
