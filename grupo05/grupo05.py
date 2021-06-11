@@ -30,7 +30,7 @@ reservados = {
     'DESC':'DESC',
 }
 
-All_tokens = list(reservados.values()) + [
+tokens = list(reservados.values()) + [
     'Igual', 
     'Desigual',
     'Mayor',
@@ -48,7 +48,6 @@ All_tokens = list(reservados.values()) + [
     'Comilla',
     'Cadena',
     'Columna',
-    # Faltan declarar algunos de la expresion regular Por ejemplo (cadena, tabla)
 ]
 
 t_Igual = r'\='
@@ -64,12 +63,7 @@ t_Corchete_Derecho = r'\]'
 t_Coma = r'\,'
 t_Punto = r'\.'
 r_Comilla = r'\''
-t_Ignorar = ' \t'
-
-def t_string(t):
-    r'\w'     #chequear si necesita una expresion regular mas acotada. \w adminte cualquier caracter
-    t.type = reservados.get(t.value, 'string'.lower)  #por si viene en mayuscula (CONTROLAR QUE FUNCIONE)
-    return t
+t_ignore = ' \t'
 
 def t_numero(t):
     r'\d+'
@@ -85,33 +79,23 @@ def t_error(t):
     t.lexer.skip(1)
 
 def t_Cadena(t):
-    r'[a-zA-Z_][a-zA-Z0-9_]*'   # revisar expresion regular
+    r'[a-zA-Z_][a-zA-Z0-9_]*'   
     t.type = reservados.get(t.value, 'Cadena')
     return t
 
-# LISTA 
+lexer = lex.lex()
+
+# LISTAS
 listaColumnas = {} # para identificar las columnas 
 listaTablas = {} # para identificar las tablas
 
-def p_Fun_Res(p):
-    '''Fun_Res : MAX Parentesis_Izquierdo COLUMNA Parentesis_Derecho
-               | MIN Parentesis_Izquierdo COLUMNA Parentesis_Derecho
-               | COUNT Parentesis_Izquierdo COLUMNA Parentesis_Derecho
-               | COUNT Parentesis_Izquierdo DISTINCT COLUMNA Parentesis_Derecho'''
+def p_S_query(p):
+    '''S : _SELECT _FROM _WHERE GROUP_BY ORDER_BY'''
 
-               # CONTEMPLA EL ASTERISCO? AL PARECER NO HAY QUE HACER AVG
-               # Falta el AS 'algo'
-
-def p_signos(p):
-    '''SIGNO: Igual | Desigual | Mayor | Menor | Mayor_Igual | Menor_Igual '''
-
-def p_QUERY(p):
-    '''QUERY :  SELECT FROM JOIN WHERE GROUP_BY ORDER_BY'''
-
-def p_SELECT(p):
-    '''SELECT | SELECT COLUMNAS
-              | SELECT DISTINCT COLUMNAS
-              | SELECT Fun_Res AS Comilla Cadena Comilla''' 
+def p__SELECT(p):
+    '''_SELECT : SELECT COLUMNAS
+               | SELECT DISTINCT COLUMNAS
+               | SELECT Fun_Res AS Comilla Cadena Comilla'''
 
 def p_COLUMNAS(p):
     '''COLUMNAS : COLUMNA
@@ -120,82 +104,104 @@ def p_COLUMNAS(p):
 def p_COLUMNA(p):
     '''COLUMNA : Cadena Punto Cadena
                | Cadena Punto Cadena AS Comilla Cadena Comilla'''
-    key = p[3]
-    if key not in listaColumnas:
-        listaColumnas[key].append(key)
+    key = p[1]
+    if key in listaColumnas:
+        if p[3] not in listaColumnas[key]:
+            listaColumnas[key].append(p[3])
+    else:
+        listaColumnas[key] = [p[3]]
+
+def p__FROM(p):
+    '''_FROM : FROM TABLAS
+             | FROM TABLAS INNER_JOIN
+             | FROM TABLAS LEFT_JOIN'''
 
 def p_TABLAS(p):
     '''TABLAS : Cadena AS Cadena
               | Cadena
               | TABLAS Cadena AS Cadena
               | TABLAS Cadena'''
-    if len(p) == 2:
-        listaTablas[p[1]] = p[1]
-    if len(p) == 3:
-        listaTablas[p[2]] = p[2]
     if len(p) == 4:
         listaTablas[p[1]] = p[3]
+    if len(p) == 2:
+        listaTablas.setdefault(p[2])
     if len(p) == 5:
         listaTablas[p[2]] = p[4]
+    if len(p) == 3:
+        listaTablas.setdefault(p[2])
 
-def p_FROM(p):
-    '''FROM : FROM TABLAS
-            | FROM TABLAS INNER_JOIN '''
+def p__WHERE(p):
+    '''_WHERE : WHERE CONDICION
+              | '''
 
-def p_WHERE(p):
-    '''WHERE: WHERE CONDICION'''
+def p_Fun_Res(p):
+    '''Fun_Res : MAX Parentesis_Izquierdo COLUMNA Parentesis_Derecho
+               | MIN Parentesis_Izquierdo COLUMNA Parentesis_Derecho
+               | COUNT Parentesis_Izquierdo COLUMNA Parentesis_Derecho
+               | COUNT Parentesis_Izquierdo DISTINCT COLUMNA Parentesis_Derecho'''
+
+def p_SIGNO(p):
+    '''SIGNO : Igual 
+             | Desigual 
+             | Mayor 
+             | Menor 
+             | Mayor_Igual 
+             | Menor_Igual '''
 
 def p_GROUP_BY(p):
     '''GROUP_BY : GROUP BY COLUMNAS
-                | GROUP BY COLUMNAS HAVING'''
+                | GROUP BY COLUMNAS _HAVING
+                | '''
 
-def p_HAVING(p):
-    '''HAVING : HAVING CONDICION'''
+def p__HAVING(p):
+    '''_HAVING : HAVING CONDICION
+               | '''
 
 def p_ORDER_BY(p):
     '''ORDER_BY : ORDER BY Cadena DESC
                 | ORDER BY Cadena ASC
-                | ORDER BY Cadena'''
+                | ORDER BY Cadena
+                | '''
 
 def p_CONDICION(p):              # CAMBIAR EL ALGO
-    '''CONDICION : COLUMNA signos ALGO  
-                 | COLUMNA signos COLUMNA
-                 | COLUMNA signos ALGO AND CONDICION
-                 | COLUMNA signos COLUMNA AND CONDICION
-                 | COLUMNA signos ALGO OR CONDICION
-                 | COLUMNA signos COLUMNA OR CONDICION'''
+    '''CONDICION : COLUMNA SIGNO ALGO  
+                 | COLUMNA SIGNO COLUMNA
+                 | COLUMNA SIGNO ALGO AND CONDICION
+                 | COLUMNA SIGNO COLUMNA AND CONDICION
+                 | COLUMNA SIGNO ALGO OR CONDICION
+                 | COLUMNA SIGNO COLUMNA OR CONDICION'''
 
-def p_ALGO(): # cambiar nombre
+def p_ALGO(p): # cambiar nombre
     '''ALGO : numero
             | Comilla Cadena Comilla''' 
             #contemplar si esta igualado a una fecha
 
 def p_INNER_JOIN(p):
-    '''INNER_JOIN : INNER JOIN TABLA ON CONDICION
-                  | INNER JOIN TABLA ON CONDICION INNER JOIN
-                  | INNER JOIN TABLA ON CONDICION WHERE'''
-
+    '''INNER_JOIN : INNER JOIN TABLAS ON CONDICION
+                  | INNER JOIN TABLAS ON CONDICION INNER JOIN
+                  | INNER JOIN TABLAS ON CONDICION WHERE'''
 
 def p_LEFT_JOIN(p):
-    '''LEFT_JOIN : LEFT JOIN TABLA ON CONDICION
-                 | LEFT JOIN TABLA ON CONDICION LEFT JOIN
-                 | LEFT JOIN TABLA ON CONDICION WHERE'''
+    '''LEFT_JOIN : LEFT JOIN TABLAS ON CONDICION
+                 | LEFT JOIN TABLAS ON CONDICION LEFT JOIN
+                 | LEFT JOIN TABLAS ON CONDICION WHERE'''
 
 
-
-query = "SELECT p.nombre , p.edad FROM PERSONA p, CUENTA cu WHERE "
-
-lexer = lex.lex()
-lexer.input(query)
-
-
-# mostrar tokens
-while True:
-    tok = lexer.token()
-    if not tok:
-        break 
-    print(tok)
-
-
-# chequea si la query tiene validez sintactica
-parser = yacc.yacc()
+def parse_select_statement(s):
+    listaColumnas.clear()
+    listaTablas.clear()
+    yacc.yacc()
+    yacc.parse(s)
+    diccionarioResultado = {}
+    for keyT in listaTablas:
+        alias = ''
+        if listaTablas.get(keyT) != None:
+            alias = listaTablas.get(keyT)
+        else:
+            alias = keyT
+        for keyC in listaColumnas:
+            if alias == keyC:
+                diccionarioResultado[keyT] = sorted(listaColumnas.get(keyC))
+    if len(listaColumnas.keys()) > len(listaTablas.keys()):
+        raise Exception('Error: se está llamando a una o más tablas tanto por su nombre como por su alias')
+    return diccionarioResultado
