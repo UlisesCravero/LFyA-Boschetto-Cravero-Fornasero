@@ -2,13 +2,10 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
 Unused terminals:
 
-    AVG
     Columna
     Corchete_Derecho
     Corchete_Izquierdo
-    IN
     IS
-    NOT
     NULL
     string
 
@@ -31,103 +28,108 @@ Rule 13    TABLAS -> Cadena
 Rule 14    TABLAS -> TABLAS Cadena AS Cadena
 Rule 15    TABLAS -> TABLAS Cadena
 Rule 16    _WHERE -> WHERE CONDICION
-Rule 17    _WHERE -> <empty>
-Rule 18    Fun_Res -> MAX Parentesis_Izquierdo COLUMNA Parentesis_Derecho
-Rule 19    Fun_Res -> MIN Parentesis_Izquierdo COLUMNA Parentesis_Derecho
-Rule 20    Fun_Res -> COUNT Parentesis_Izquierdo COLUMNA Parentesis_Derecho
-Rule 21    Fun_Res -> COUNT Parentesis_Izquierdo DISTINCT COLUMNA Parentesis_Derecho
-Rule 22    SIGNO -> Igual
-Rule 23    SIGNO -> Desigual
-Rule 24    SIGNO -> Mayor
-Rule 25    SIGNO -> Menor
-Rule 26    SIGNO -> Mayor_Igual
-Rule 27    SIGNO -> Menor_Igual
-Rule 28    GROUP_BY -> GROUP BY COLUMNAS
-Rule 29    GROUP_BY -> GROUP BY COLUMNAS _HAVING
-Rule 30    GROUP_BY -> <empty>
-Rule 31    _HAVING -> HAVING CONDICION
-Rule 32    _HAVING -> <empty>
-Rule 33    ORDER_BY -> ORDER BY Cadena DESC
-Rule 34    ORDER_BY -> ORDER BY Cadena ASC
-Rule 35    ORDER_BY -> ORDER BY Cadena
-Rule 36    ORDER_BY -> <empty>
-Rule 37    CONDICION -> COLUMNA SIGNO ALGO
-Rule 38    CONDICION -> COLUMNA SIGNO COLUMNA
-Rule 39    CONDICION -> COLUMNA SIGNO ALGO AND CONDICION
-Rule 40    CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION
-Rule 41    CONDICION -> COLUMNA SIGNO ALGO OR CONDICION
-Rule 42    CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION
-Rule 43    ALGO -> numero
-Rule 44    ALGO -> Comilla Cadena Comilla
-Rule 45    INNER_JOIN -> INNER JOIN TABLAS ON CONDICION
-Rule 46    INNER_JOIN -> INNER JOIN TABLAS ON CONDICION INNER JOIN
-Rule 47    INNER_JOIN -> INNER JOIN TABLAS ON CONDICION WHERE
-Rule 48    LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION
-Rule 49    LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION LEFT JOIN
-Rule 50    LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION WHERE
+Rule 17    _WHERE -> WHERE CONDICION _IN
+Rule 18    _WHERE -> WHERE CONDICION NOT_IN
+Rule 19    _WHERE -> <empty>
+Rule 20    _IN -> IN Parentesis_Izquierdo S Parentesis_Derecho
+Rule 21    NOT_IN -> NOT IN Parentesis_Izquierdo S Parentesis_Derecho
+Rule 22    Fun_Res -> MAX Parentesis_Izquierdo COLUMNA Parentesis_Derecho
+Rule 23    Fun_Res -> MIN Parentesis_Izquierdo COLUMNA Parentesis_Derecho
+Rule 24    Fun_Res -> COUNT Parentesis_Izquierdo COLUMNA Parentesis_Derecho
+Rule 25    Fun_Res -> COUNT Parentesis_Izquierdo DISTINCT COLUMNA Parentesis_Derecho
+Rule 26    SIGNO -> Igual
+Rule 27    SIGNO -> Desigual
+Rule 28    SIGNO -> Mayor
+Rule 29    SIGNO -> Menor
+Rule 30    SIGNO -> Mayor_Igual
+Rule 31    SIGNO -> Menor_Igual
+Rule 32    GROUP_BY -> GROUP BY COLUMNAS
+Rule 33    GROUP_BY -> GROUP BY COLUMNAS _HAVING
+Rule 34    GROUP_BY -> <empty>
+Rule 35    _HAVING -> HAVING CONDICION
+Rule 36    _HAVING -> <empty>
+Rule 37    ORDER_BY -> ORDER BY Cadena DESC
+Rule 38    ORDER_BY -> ORDER BY Cadena ASC
+Rule 39    ORDER_BY -> ORDER BY Cadena
+Rule 40    ORDER_BY -> <empty>
+Rule 41    CONDICION -> COLUMNA SIGNO ALGO
+Rule 42    CONDICION -> COLUMNA SIGNO COLUMNA
+Rule 43    CONDICION -> COLUMNA SIGNO ALGO AND CONDICION
+Rule 44    CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION
+Rule 45    CONDICION -> COLUMNA SIGNO ALGO OR CONDICION
+Rule 46    CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION
+Rule 47    ALGO -> numero
+Rule 48    ALGO -> Comilla Cadena Comilla
+Rule 49    INNER_JOIN -> INNER JOIN TABLAS ON CONDICION
+Rule 50    INNER_JOIN -> INNER JOIN TABLAS ON CONDICION INNER JOIN
+Rule 51    INNER_JOIN -> INNER JOIN TABLAS ON CONDICION WHERE
+Rule 52    LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION
+Rule 53    LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION LEFT JOIN
+Rule 54    LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION WHERE
 
 Terminals, with rules where they appear
 
-AND                  : 39 40
+AND                  : 43 44
 AS                   : 4 8 12 14
-ASC                  : 34
-AVG                  : 
-BY                   : 28 29 33 34 35
-COUNT                : 20 21
-Cadena               : 4 7 7 8 8 8 12 12 13 14 14 15 33 34 35 44
+ASC                  : 38
+BY                   : 32 33 37 38 39
+COUNT                : 24 25
+Cadena               : 4 7 7 8 8 8 12 12 13 14 14 15 37 38 39 48
 Columna              : 
 Coma                 : 6
-Comilla              : 4 4 8 8 44 44
+Comilla              : 4 4 8 8 48 48
 Corchete_Derecho     : 
 Corchete_Izquierdo   : 
-DESC                 : 33
-DISTINCT             : 3 21
-Desigual             : 23
+DESC                 : 37
+DISTINCT             : 3 25
+Desigual             : 27
 FROM                 : 9 10 11
-GROUP                : 28 29
-HAVING               : 31
-IN                   : 
-INNER                : 45 46 46 47
+GROUP                : 32 33
+HAVING               : 35
+IN                   : 20 21
+INNER                : 49 50 50 51
 IS                   : 
-Igual                : 22
-JOIN                 : 45 46 46 47 48 49 49 50
-LEFT                 : 48 49 49 50
-MAX                  : 18
-MIN                  : 19
-Mayor                : 24
-Mayor_Igual          : 26
-Menor                : 25
-Menor_Igual          : 27
-NOT                  : 
+Igual                : 26
+JOIN                 : 49 50 50 51 52 53 53 54
+LEFT                 : 52 53 53 54
+MAX                  : 22
+MIN                  : 23
+Mayor                : 28
+Mayor_Igual          : 30
+Menor                : 29
+Menor_Igual          : 31
+NOT                  : 21
 NULL                 : 
-ON                   : 45 46 47 48 49 50
-OR                   : 41 42
-ORDER                : 33 34 35
-Parentesis_Derecho   : 18 19 20 21
-Parentesis_Izquierdo : 18 19 20 21
+ON                   : 49 50 51 52 53 54
+OR                   : 45 46
+ORDER                : 37 38 39
+Parentesis_Derecho   : 20 21 22 23 24 25
+Parentesis_Izquierdo : 20 21 22 23 24 25
 Punto                : 7 8
 SELECT               : 2 3 4
-WHERE                : 16 47 50
+WHERE                : 16 17 18 51 54
 error                : 
-numero               : 43
+numero               : 47
 string               : 
 
 Nonterminals, with rules where they appear
 
-ALGO                 : 37 39 41
-COLUMNA              : 5 6 18 19 20 21 37 38 38 39 40 40 41 42 42
-COLUMNAS             : 2 3 6 28 29
-CONDICION            : 16 31 39 40 41 42 45 46 47 48 49 50
+ALGO                 : 41 43 45
+COLUMNA              : 5 6 22 23 24 25 41 42 42 43 44 44 45 46 46
+COLUMNAS             : 2 3 6 32 33
+CONDICION            : 16 17 18 35 43 44 45 46 49 50 51 52 53 54
 Fun_Res              : 4
 GROUP_BY             : 1
 INNER_JOIN           : 10
 LEFT_JOIN            : 11
+NOT_IN               : 18
 ORDER_BY             : 1
-S                    : 0
-SIGNO                : 37 38 39 40 41 42
-TABLAS               : 9 10 11 14 15 45 46 47 48 49 50
+S                    : 20 21 0
+SIGNO                : 41 42 43 44 45 46
+TABLAS               : 9 10 11 14 15 49 50 51 52 53 54
 _FROM                : 1
-_HAVING              : 29
+_HAVING              : 33
+_IN                  : 17
 _SELECT              : 1
 _WHERE               : 1
 
@@ -170,10 +172,10 @@ state 3
     (4) _SELECT -> SELECT . Fun_Res AS Comilla Cadena Comilla
     (5) COLUMNAS -> . COLUMNA
     (6) COLUMNAS -> . COLUMNA Coma COLUMNAS
-    (18) Fun_Res -> . MAX Parentesis_Izquierdo COLUMNA Parentesis_Derecho
-    (19) Fun_Res -> . MIN Parentesis_Izquierdo COLUMNA Parentesis_Derecho
-    (20) Fun_Res -> . COUNT Parentesis_Izquierdo COLUMNA Parentesis_Derecho
-    (21) Fun_Res -> . COUNT Parentesis_Izquierdo DISTINCT COLUMNA Parentesis_Derecho
+    (22) Fun_Res -> . MAX Parentesis_Izquierdo COLUMNA Parentesis_Derecho
+    (23) Fun_Res -> . MIN Parentesis_Izquierdo COLUMNA Parentesis_Derecho
+    (24) Fun_Res -> . COUNT Parentesis_Izquierdo COLUMNA Parentesis_Derecho
+    (25) Fun_Res -> . COUNT Parentesis_Izquierdo DISTINCT COLUMNA Parentesis_Derecho
     (7) COLUMNA -> . Cadena Punto Cadena
     (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
 
@@ -191,12 +193,15 @@ state 4
 
     (1) S -> _SELECT _FROM . _WHERE GROUP_BY ORDER_BY
     (16) _WHERE -> . WHERE CONDICION
-    (17) _WHERE -> .
+    (17) _WHERE -> . WHERE CONDICION _IN
+    (18) _WHERE -> . WHERE CONDICION NOT_IN
+    (19) _WHERE -> .
 
     WHERE           shift and go to state 15
-    GROUP           reduce using rule 17 (_WHERE -> .)
-    ORDER           reduce using rule 17 (_WHERE -> .)
-    $end            reduce using rule 17 (_WHERE -> .)
+    GROUP           reduce using rule 19 (_WHERE -> .)
+    ORDER           reduce using rule 19 (_WHERE -> .)
+    $end            reduce using rule 19 (_WHERE -> .)
+    Parentesis_Derecho reduce using rule 19 (_WHERE -> .)
 
     _WHERE                         shift and go to state 14
 
@@ -258,27 +263,28 @@ state 10
     HAVING          reduce using rule 5 (COLUMNAS -> COLUMNA .)
     ORDER           reduce using rule 5 (COLUMNAS -> COLUMNA .)
     $end            reduce using rule 5 (COLUMNAS -> COLUMNA .)
+    Parentesis_Derecho reduce using rule 5 (COLUMNAS -> COLUMNA .)
     Coma            shift and go to state 21
 
 
 state 11
 
-    (18) Fun_Res -> MAX . Parentesis_Izquierdo COLUMNA Parentesis_Derecho
+    (22) Fun_Res -> MAX . Parentesis_Izquierdo COLUMNA Parentesis_Derecho
 
     Parentesis_Izquierdo shift and go to state 22
 
 
 state 12
 
-    (19) Fun_Res -> MIN . Parentesis_Izquierdo COLUMNA Parentesis_Derecho
+    (23) Fun_Res -> MIN . Parentesis_Izquierdo COLUMNA Parentesis_Derecho
 
     Parentesis_Izquierdo shift and go to state 23
 
 
 state 13
 
-    (20) Fun_Res -> COUNT . Parentesis_Izquierdo COLUMNA Parentesis_Derecho
-    (21) Fun_Res -> COUNT . Parentesis_Izquierdo DISTINCT COLUMNA Parentesis_Derecho
+    (24) Fun_Res -> COUNT . Parentesis_Izquierdo COLUMNA Parentesis_Derecho
+    (25) Fun_Res -> COUNT . Parentesis_Izquierdo DISTINCT COLUMNA Parentesis_Derecho
 
     Parentesis_Izquierdo shift and go to state 24
 
@@ -286,25 +292,28 @@ state 13
 state 14
 
     (1) S -> _SELECT _FROM _WHERE . GROUP_BY ORDER_BY
-    (28) GROUP_BY -> . GROUP BY COLUMNAS
-    (29) GROUP_BY -> . GROUP BY COLUMNAS _HAVING
-    (30) GROUP_BY -> .
+    (32) GROUP_BY -> . GROUP BY COLUMNAS
+    (33) GROUP_BY -> . GROUP BY COLUMNAS _HAVING
+    (34) GROUP_BY -> .
 
     GROUP           shift and go to state 26
-    ORDER           reduce using rule 30 (GROUP_BY -> .)
-    $end            reduce using rule 30 (GROUP_BY -> .)
+    ORDER           reduce using rule 34 (GROUP_BY -> .)
+    $end            reduce using rule 34 (GROUP_BY -> .)
+    Parentesis_Derecho reduce using rule 34 (GROUP_BY -> .)
 
     GROUP_BY                       shift and go to state 25
 
 state 15
 
     (16) _WHERE -> WHERE . CONDICION
-    (37) CONDICION -> . COLUMNA SIGNO ALGO
-    (38) CONDICION -> . COLUMNA SIGNO COLUMNA
-    (39) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
-    (40) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
-    (41) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
-    (42) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
+    (17) _WHERE -> WHERE . CONDICION _IN
+    (18) _WHERE -> WHERE . CONDICION NOT_IN
+    (41) CONDICION -> . COLUMNA SIGNO ALGO
+    (42) CONDICION -> . COLUMNA SIGNO COLUMNA
+    (43) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
+    (44) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
+    (45) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
+    (46) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
     (7) COLUMNA -> . Cadena Punto Cadena
     (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
 
@@ -320,17 +329,18 @@ state 16
     (11) _FROM -> FROM TABLAS . LEFT_JOIN
     (14) TABLAS -> TABLAS . Cadena AS Cadena
     (15) TABLAS -> TABLAS . Cadena
-    (45) INNER_JOIN -> . INNER JOIN TABLAS ON CONDICION
-    (46) INNER_JOIN -> . INNER JOIN TABLAS ON CONDICION INNER JOIN
-    (47) INNER_JOIN -> . INNER JOIN TABLAS ON CONDICION WHERE
-    (48) LEFT_JOIN -> . LEFT JOIN TABLAS ON CONDICION
-    (49) LEFT_JOIN -> . LEFT JOIN TABLAS ON CONDICION LEFT JOIN
-    (50) LEFT_JOIN -> . LEFT JOIN TABLAS ON CONDICION WHERE
+    (49) INNER_JOIN -> . INNER JOIN TABLAS ON CONDICION
+    (50) INNER_JOIN -> . INNER JOIN TABLAS ON CONDICION INNER JOIN
+    (51) INNER_JOIN -> . INNER JOIN TABLAS ON CONDICION WHERE
+    (52) LEFT_JOIN -> . LEFT JOIN TABLAS ON CONDICION
+    (53) LEFT_JOIN -> . LEFT JOIN TABLAS ON CONDICION LEFT JOIN
+    (54) LEFT_JOIN -> . LEFT JOIN TABLAS ON CONDICION WHERE
 
     WHERE           reduce using rule 9 (_FROM -> FROM TABLAS .)
     GROUP           reduce using rule 9 (_FROM -> FROM TABLAS .)
     ORDER           reduce using rule 9 (_FROM -> FROM TABLAS .)
     $end            reduce using rule 9 (_FROM -> FROM TABLAS .)
+    Parentesis_Derecho reduce using rule 9 (_FROM -> FROM TABLAS .)
     Cadena          shift and go to state 31
     INNER           shift and go to state 32
     LEFT            shift and go to state 33
@@ -351,6 +361,7 @@ state 17
     GROUP           reduce using rule 13 (TABLAS -> Cadena .)
     ORDER           reduce using rule 13 (TABLAS -> Cadena .)
     $end            reduce using rule 13 (TABLAS -> Cadena .)
+    Parentesis_Derecho reduce using rule 13 (TABLAS -> Cadena .)
     ON              reduce using rule 13 (TABLAS -> Cadena .)
 
 
@@ -391,7 +402,7 @@ state 21
 
 state 22
 
-    (18) Fun_Res -> MAX Parentesis_Izquierdo . COLUMNA Parentesis_Derecho
+    (22) Fun_Res -> MAX Parentesis_Izquierdo . COLUMNA Parentesis_Derecho
     (7) COLUMNA -> . Cadena Punto Cadena
     (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
 
@@ -401,7 +412,7 @@ state 22
 
 state 23
 
-    (19) Fun_Res -> MIN Parentesis_Izquierdo . COLUMNA Parentesis_Derecho
+    (23) Fun_Res -> MIN Parentesis_Izquierdo . COLUMNA Parentesis_Derecho
     (7) COLUMNA -> . Cadena Punto Cadena
     (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
 
@@ -411,8 +422,8 @@ state 23
 
 state 24
 
-    (20) Fun_Res -> COUNT Parentesis_Izquierdo . COLUMNA Parentesis_Derecho
-    (21) Fun_Res -> COUNT Parentesis_Izquierdo . DISTINCT COLUMNA Parentesis_Derecho
+    (24) Fun_Res -> COUNT Parentesis_Izquierdo . COLUMNA Parentesis_Derecho
+    (25) Fun_Res -> COUNT Parentesis_Izquierdo . DISTINCT COLUMNA Parentesis_Derecho
     (7) COLUMNA -> . Cadena Punto Cadena
     (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
 
@@ -424,20 +435,21 @@ state 24
 state 25
 
     (1) S -> _SELECT _FROM _WHERE GROUP_BY . ORDER_BY
-    (33) ORDER_BY -> . ORDER BY Cadena DESC
-    (34) ORDER_BY -> . ORDER BY Cadena ASC
-    (35) ORDER_BY -> . ORDER BY Cadena
-    (36) ORDER_BY -> .
+    (37) ORDER_BY -> . ORDER BY Cadena DESC
+    (38) ORDER_BY -> . ORDER BY Cadena ASC
+    (39) ORDER_BY -> . ORDER BY Cadena
+    (40) ORDER_BY -> .
 
     ORDER           shift and go to state 43
-    $end            reduce using rule 36 (ORDER_BY -> .)
+    $end            reduce using rule 40 (ORDER_BY -> .)
+    Parentesis_Derecho reduce using rule 40 (ORDER_BY -> .)
 
     ORDER_BY                       shift and go to state 42
 
 state 26
 
-    (28) GROUP_BY -> GROUP . BY COLUMNAS
-    (29) GROUP_BY -> GROUP . BY COLUMNAS _HAVING
+    (32) GROUP_BY -> GROUP . BY COLUMNAS
+    (33) GROUP_BY -> GROUP . BY COLUMNAS _HAVING
 
     BY              shift and go to state 44
 
@@ -445,35 +457,44 @@ state 26
 state 27
 
     (16) _WHERE -> WHERE CONDICION .
+    (17) _WHERE -> WHERE CONDICION . _IN
+    (18) _WHERE -> WHERE CONDICION . NOT_IN
+    (20) _IN -> . IN Parentesis_Izquierdo S Parentesis_Derecho
+    (21) NOT_IN -> . NOT IN Parentesis_Izquierdo S Parentesis_Derecho
 
     GROUP           reduce using rule 16 (_WHERE -> WHERE CONDICION .)
     ORDER           reduce using rule 16 (_WHERE -> WHERE CONDICION .)
     $end            reduce using rule 16 (_WHERE -> WHERE CONDICION .)
+    Parentesis_Derecho reduce using rule 16 (_WHERE -> WHERE CONDICION .)
+    IN              shift and go to state 47
+    NOT             shift and go to state 48
 
+    _IN                            shift and go to state 45
+    NOT_IN                         shift and go to state 46
 
 state 28
 
-    (37) CONDICION -> COLUMNA . SIGNO ALGO
-    (38) CONDICION -> COLUMNA . SIGNO COLUMNA
-    (39) CONDICION -> COLUMNA . SIGNO ALGO AND CONDICION
-    (40) CONDICION -> COLUMNA . SIGNO COLUMNA AND CONDICION
-    (41) CONDICION -> COLUMNA . SIGNO ALGO OR CONDICION
-    (42) CONDICION -> COLUMNA . SIGNO COLUMNA OR CONDICION
-    (22) SIGNO -> . Igual
-    (23) SIGNO -> . Desigual
-    (24) SIGNO -> . Mayor
-    (25) SIGNO -> . Menor
-    (26) SIGNO -> . Mayor_Igual
-    (27) SIGNO -> . Menor_Igual
+    (41) CONDICION -> COLUMNA . SIGNO ALGO
+    (42) CONDICION -> COLUMNA . SIGNO COLUMNA
+    (43) CONDICION -> COLUMNA . SIGNO ALGO AND CONDICION
+    (44) CONDICION -> COLUMNA . SIGNO COLUMNA AND CONDICION
+    (45) CONDICION -> COLUMNA . SIGNO ALGO OR CONDICION
+    (46) CONDICION -> COLUMNA . SIGNO COLUMNA OR CONDICION
+    (26) SIGNO -> . Igual
+    (27) SIGNO -> . Desigual
+    (28) SIGNO -> . Mayor
+    (29) SIGNO -> . Menor
+    (30) SIGNO -> . Mayor_Igual
+    (31) SIGNO -> . Menor_Igual
 
-    Igual           shift and go to state 46
-    Desigual        shift and go to state 47
-    Mayor           shift and go to state 48
-    Menor           shift and go to state 49
-    Mayor_Igual     shift and go to state 50
-    Menor_Igual     shift and go to state 51
+    Igual           shift and go to state 50
+    Desigual        shift and go to state 51
+    Mayor           shift and go to state 52
+    Menor           shift and go to state 53
+    Mayor_Igual     shift and go to state 54
+    Menor_Igual     shift and go to state 55
 
-    SIGNO                          shift and go to state 45
+    SIGNO                          shift and go to state 49
 
 state 29
 
@@ -483,6 +504,7 @@ state 29
     GROUP           reduce using rule 10 (_FROM -> FROM TABLAS INNER_JOIN .)
     ORDER           reduce using rule 10 (_FROM -> FROM TABLAS INNER_JOIN .)
     $end            reduce using rule 10 (_FROM -> FROM TABLAS INNER_JOIN .)
+    Parentesis_Derecho reduce using rule 10 (_FROM -> FROM TABLAS INNER_JOIN .)
 
 
 state 30
@@ -493,6 +515,7 @@ state 30
     GROUP           reduce using rule 11 (_FROM -> FROM TABLAS LEFT_JOIN .)
     ORDER           reduce using rule 11 (_FROM -> FROM TABLAS LEFT_JOIN .)
     $end            reduce using rule 11 (_FROM -> FROM TABLAS LEFT_JOIN .)
+    Parentesis_Derecho reduce using rule 11 (_FROM -> FROM TABLAS LEFT_JOIN .)
 
 
 state 31
@@ -500,7 +523,7 @@ state 31
     (14) TABLAS -> TABLAS Cadena . AS Cadena
     (15) TABLAS -> TABLAS Cadena .
 
-    AS              shift and go to state 52
+    AS              shift and go to state 56
     Cadena          reduce using rule 15 (TABLAS -> TABLAS Cadena .)
     INNER           reduce using rule 15 (TABLAS -> TABLAS Cadena .)
     LEFT            reduce using rule 15 (TABLAS -> TABLAS Cadena .)
@@ -508,39 +531,40 @@ state 31
     GROUP           reduce using rule 15 (TABLAS -> TABLAS Cadena .)
     ORDER           reduce using rule 15 (TABLAS -> TABLAS Cadena .)
     $end            reduce using rule 15 (TABLAS -> TABLAS Cadena .)
+    Parentesis_Derecho reduce using rule 15 (TABLAS -> TABLAS Cadena .)
     ON              reduce using rule 15 (TABLAS -> TABLAS Cadena .)
 
 
 state 32
 
-    (45) INNER_JOIN -> INNER . JOIN TABLAS ON CONDICION
-    (46) INNER_JOIN -> INNER . JOIN TABLAS ON CONDICION INNER JOIN
-    (47) INNER_JOIN -> INNER . JOIN TABLAS ON CONDICION WHERE
+    (49) INNER_JOIN -> INNER . JOIN TABLAS ON CONDICION
+    (50) INNER_JOIN -> INNER . JOIN TABLAS ON CONDICION INNER JOIN
+    (51) INNER_JOIN -> INNER . JOIN TABLAS ON CONDICION WHERE
 
-    JOIN            shift and go to state 53
+    JOIN            shift and go to state 57
 
 
 state 33
 
-    (48) LEFT_JOIN -> LEFT . JOIN TABLAS ON CONDICION
-    (49) LEFT_JOIN -> LEFT . JOIN TABLAS ON CONDICION LEFT JOIN
-    (50) LEFT_JOIN -> LEFT . JOIN TABLAS ON CONDICION WHERE
+    (52) LEFT_JOIN -> LEFT . JOIN TABLAS ON CONDICION
+    (53) LEFT_JOIN -> LEFT . JOIN TABLAS ON CONDICION LEFT JOIN
+    (54) LEFT_JOIN -> LEFT . JOIN TABLAS ON CONDICION WHERE
 
-    JOIN            shift and go to state 54
+    JOIN            shift and go to state 58
 
 
 state 34
 
     (12) TABLAS -> Cadena AS . Cadena
 
-    Cadena          shift and go to state 55
+    Cadena          shift and go to state 59
 
 
 state 35
 
     (4) _SELECT -> SELECT Fun_Res AS Comilla . Cadena Comilla
 
-    Cadena          shift and go to state 56
+    Cadena          shift and go to state 60
 
 
 state 36
@@ -562,11 +586,13 @@ state 36
     Parentesis_Derecho reduce using rule 7 (COLUMNA -> Cadena Punto Cadena .)
     AND             reduce using rule 7 (COLUMNA -> Cadena Punto Cadena .)
     OR              reduce using rule 7 (COLUMNA -> Cadena Punto Cadena .)
+    IN              reduce using rule 7 (COLUMNA -> Cadena Punto Cadena .)
+    NOT             reduce using rule 7 (COLUMNA -> Cadena Punto Cadena .)
     GROUP           reduce using rule 7 (COLUMNA -> Cadena Punto Cadena .)
     INNER           reduce using rule 7 (COLUMNA -> Cadena Punto Cadena .)
     WHERE           reduce using rule 7 (COLUMNA -> Cadena Punto Cadena .)
     LEFT            reduce using rule 7 (COLUMNA -> Cadena Punto Cadena .)
-    AS              shift and go to state 57
+    AS              shift and go to state 61
 
 
 state 37
@@ -577,59 +603,61 @@ state 37
     HAVING          reduce using rule 6 (COLUMNAS -> COLUMNA Coma COLUMNAS .)
     ORDER           reduce using rule 6 (COLUMNAS -> COLUMNA Coma COLUMNAS .)
     $end            reduce using rule 6 (COLUMNAS -> COLUMNA Coma COLUMNAS .)
+    Parentesis_Derecho reduce using rule 6 (COLUMNAS -> COLUMNA Coma COLUMNAS .)
 
 
 state 38
 
-    (18) Fun_Res -> MAX Parentesis_Izquierdo COLUMNA . Parentesis_Derecho
+    (22) Fun_Res -> MAX Parentesis_Izquierdo COLUMNA . Parentesis_Derecho
 
-    Parentesis_Derecho shift and go to state 58
+    Parentesis_Derecho shift and go to state 62
 
 
 state 39
 
-    (19) Fun_Res -> MIN Parentesis_Izquierdo COLUMNA . Parentesis_Derecho
+    (23) Fun_Res -> MIN Parentesis_Izquierdo COLUMNA . Parentesis_Derecho
 
-    Parentesis_Derecho shift and go to state 59
+    Parentesis_Derecho shift and go to state 63
 
 
 state 40
 
-    (20) Fun_Res -> COUNT Parentesis_Izquierdo COLUMNA . Parentesis_Derecho
+    (24) Fun_Res -> COUNT Parentesis_Izquierdo COLUMNA . Parentesis_Derecho
 
-    Parentesis_Derecho shift and go to state 60
+    Parentesis_Derecho shift and go to state 64
 
 
 state 41
 
-    (21) Fun_Res -> COUNT Parentesis_Izquierdo DISTINCT . COLUMNA Parentesis_Derecho
+    (25) Fun_Res -> COUNT Parentesis_Izquierdo DISTINCT . COLUMNA Parentesis_Derecho
     (7) COLUMNA -> . Cadena Punto Cadena
     (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
 
     Cadena          shift and go to state 9
 
-    COLUMNA                        shift and go to state 61
+    COLUMNA                        shift and go to state 65
 
 state 42
 
     (1) S -> _SELECT _FROM _WHERE GROUP_BY ORDER_BY .
 
     $end            reduce using rule 1 (S -> _SELECT _FROM _WHERE GROUP_BY ORDER_BY .)
+    Parentesis_Derecho reduce using rule 1 (S -> _SELECT _FROM _WHERE GROUP_BY ORDER_BY .)
 
 
 state 43
 
-    (33) ORDER_BY -> ORDER . BY Cadena DESC
-    (34) ORDER_BY -> ORDER . BY Cadena ASC
-    (35) ORDER_BY -> ORDER . BY Cadena
+    (37) ORDER_BY -> ORDER . BY Cadena DESC
+    (38) ORDER_BY -> ORDER . BY Cadena ASC
+    (39) ORDER_BY -> ORDER . BY Cadena
 
-    BY              shift and go to state 62
+    BY              shift and go to state 66
 
 
 state 44
 
-    (28) GROUP_BY -> GROUP BY . COLUMNAS
-    (29) GROUP_BY -> GROUP BY . COLUMNAS _HAVING
+    (32) GROUP_BY -> GROUP BY . COLUMNAS
+    (33) GROUP_BY -> GROUP BY . COLUMNAS _HAVING
     (5) COLUMNAS -> . COLUMNA
     (6) COLUMNAS -> . COLUMNA Coma COLUMNAS
     (7) COLUMNA -> . Cadena Punto Cadena
@@ -637,109 +665,129 @@ state 44
 
     Cadena          shift and go to state 9
 
-    COLUMNAS                       shift and go to state 63
+    COLUMNAS                       shift and go to state 67
     COLUMNA                        shift and go to state 10
 
 state 45
 
-    (37) CONDICION -> COLUMNA SIGNO . ALGO
-    (38) CONDICION -> COLUMNA SIGNO . COLUMNA
-    (39) CONDICION -> COLUMNA SIGNO . ALGO AND CONDICION
-    (40) CONDICION -> COLUMNA SIGNO . COLUMNA AND CONDICION
-    (41) CONDICION -> COLUMNA SIGNO . ALGO OR CONDICION
-    (42) CONDICION -> COLUMNA SIGNO . COLUMNA OR CONDICION
-    (43) ALGO -> . numero
-    (44) ALGO -> . Comilla Cadena Comilla
-    (7) COLUMNA -> . Cadena Punto Cadena
-    (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
+    (17) _WHERE -> WHERE CONDICION _IN .
 
-    numero          shift and go to state 66
-    Comilla         shift and go to state 67
-    Cadena          shift and go to state 9
+    GROUP           reduce using rule 17 (_WHERE -> WHERE CONDICION _IN .)
+    ORDER           reduce using rule 17 (_WHERE -> WHERE CONDICION _IN .)
+    $end            reduce using rule 17 (_WHERE -> WHERE CONDICION _IN .)
+    Parentesis_Derecho reduce using rule 17 (_WHERE -> WHERE CONDICION _IN .)
 
-    COLUMNA                        shift and go to state 64
-    ALGO                           shift and go to state 65
 
 state 46
 
-    (22) SIGNO -> Igual .
+    (18) _WHERE -> WHERE CONDICION NOT_IN .
 
-    numero          reduce using rule 22 (SIGNO -> Igual .)
-    Comilla         reduce using rule 22 (SIGNO -> Igual .)
-    Cadena          reduce using rule 22 (SIGNO -> Igual .)
+    GROUP           reduce using rule 18 (_WHERE -> WHERE CONDICION NOT_IN .)
+    ORDER           reduce using rule 18 (_WHERE -> WHERE CONDICION NOT_IN .)
+    $end            reduce using rule 18 (_WHERE -> WHERE CONDICION NOT_IN .)
+    Parentesis_Derecho reduce using rule 18 (_WHERE -> WHERE CONDICION NOT_IN .)
 
 
 state 47
 
-    (23) SIGNO -> Desigual .
+    (20) _IN -> IN . Parentesis_Izquierdo S Parentesis_Derecho
 
-    numero          reduce using rule 23 (SIGNO -> Desigual .)
-    Comilla         reduce using rule 23 (SIGNO -> Desigual .)
-    Cadena          reduce using rule 23 (SIGNO -> Desigual .)
+    Parentesis_Izquierdo shift and go to state 68
 
 
 state 48
 
-    (24) SIGNO -> Mayor .
+    (21) NOT_IN -> NOT . IN Parentesis_Izquierdo S Parentesis_Derecho
 
-    numero          reduce using rule 24 (SIGNO -> Mayor .)
-    Comilla         reduce using rule 24 (SIGNO -> Mayor .)
-    Cadena          reduce using rule 24 (SIGNO -> Mayor .)
+    IN              shift and go to state 69
 
 
 state 49
 
-    (25) SIGNO -> Menor .
+    (41) CONDICION -> COLUMNA SIGNO . ALGO
+    (42) CONDICION -> COLUMNA SIGNO . COLUMNA
+    (43) CONDICION -> COLUMNA SIGNO . ALGO AND CONDICION
+    (44) CONDICION -> COLUMNA SIGNO . COLUMNA AND CONDICION
+    (45) CONDICION -> COLUMNA SIGNO . ALGO OR CONDICION
+    (46) CONDICION -> COLUMNA SIGNO . COLUMNA OR CONDICION
+    (47) ALGO -> . numero
+    (48) ALGO -> . Comilla Cadena Comilla
+    (7) COLUMNA -> . Cadena Punto Cadena
+    (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
 
-    numero          reduce using rule 25 (SIGNO -> Menor .)
-    Comilla         reduce using rule 25 (SIGNO -> Menor .)
-    Cadena          reduce using rule 25 (SIGNO -> Menor .)
+    numero          shift and go to state 72
+    Comilla         shift and go to state 73
+    Cadena          shift and go to state 9
 
+    COLUMNA                        shift and go to state 70
+    ALGO                           shift and go to state 71
 
 state 50
 
-    (26) SIGNO -> Mayor_Igual .
+    (26) SIGNO -> Igual .
 
-    numero          reduce using rule 26 (SIGNO -> Mayor_Igual .)
-    Comilla         reduce using rule 26 (SIGNO -> Mayor_Igual .)
-    Cadena          reduce using rule 26 (SIGNO -> Mayor_Igual .)
+    numero          reduce using rule 26 (SIGNO -> Igual .)
+    Comilla         reduce using rule 26 (SIGNO -> Igual .)
+    Cadena          reduce using rule 26 (SIGNO -> Igual .)
 
 
 state 51
 
-    (27) SIGNO -> Menor_Igual .
+    (27) SIGNO -> Desigual .
 
-    numero          reduce using rule 27 (SIGNO -> Menor_Igual .)
-    Comilla         reduce using rule 27 (SIGNO -> Menor_Igual .)
-    Cadena          reduce using rule 27 (SIGNO -> Menor_Igual .)
+    numero          reduce using rule 27 (SIGNO -> Desigual .)
+    Comilla         reduce using rule 27 (SIGNO -> Desigual .)
+    Cadena          reduce using rule 27 (SIGNO -> Desigual .)
 
 
 state 52
 
-    (14) TABLAS -> TABLAS Cadena AS . Cadena
+    (28) SIGNO -> Mayor .
 
-    Cadena          shift and go to state 68
+    numero          reduce using rule 28 (SIGNO -> Mayor .)
+    Comilla         reduce using rule 28 (SIGNO -> Mayor .)
+    Cadena          reduce using rule 28 (SIGNO -> Mayor .)
 
 
 state 53
 
-    (45) INNER_JOIN -> INNER JOIN . TABLAS ON CONDICION
-    (46) INNER_JOIN -> INNER JOIN . TABLAS ON CONDICION INNER JOIN
-    (47) INNER_JOIN -> INNER JOIN . TABLAS ON CONDICION WHERE
-    (12) TABLAS -> . Cadena AS Cadena
-    (13) TABLAS -> . Cadena
-    (14) TABLAS -> . TABLAS Cadena AS Cadena
-    (15) TABLAS -> . TABLAS Cadena
+    (29) SIGNO -> Menor .
 
-    Cadena          shift and go to state 17
+    numero          reduce using rule 29 (SIGNO -> Menor .)
+    Comilla         reduce using rule 29 (SIGNO -> Menor .)
+    Cadena          reduce using rule 29 (SIGNO -> Menor .)
 
-    TABLAS                         shift and go to state 69
 
 state 54
 
-    (48) LEFT_JOIN -> LEFT JOIN . TABLAS ON CONDICION
-    (49) LEFT_JOIN -> LEFT JOIN . TABLAS ON CONDICION LEFT JOIN
-    (50) LEFT_JOIN -> LEFT JOIN . TABLAS ON CONDICION WHERE
+    (30) SIGNO -> Mayor_Igual .
+
+    numero          reduce using rule 30 (SIGNO -> Mayor_Igual .)
+    Comilla         reduce using rule 30 (SIGNO -> Mayor_Igual .)
+    Cadena          reduce using rule 30 (SIGNO -> Mayor_Igual .)
+
+
+state 55
+
+    (31) SIGNO -> Menor_Igual .
+
+    numero          reduce using rule 31 (SIGNO -> Menor_Igual .)
+    Comilla         reduce using rule 31 (SIGNO -> Menor_Igual .)
+    Cadena          reduce using rule 31 (SIGNO -> Menor_Igual .)
+
+
+state 56
+
+    (14) TABLAS -> TABLAS Cadena AS . Cadena
+
+    Cadena          shift and go to state 74
+
+
+state 57
+
+    (49) INNER_JOIN -> INNER JOIN . TABLAS ON CONDICION
+    (50) INNER_JOIN -> INNER JOIN . TABLAS ON CONDICION INNER JOIN
+    (51) INNER_JOIN -> INNER JOIN . TABLAS ON CONDICION WHERE
     (12) TABLAS -> . Cadena AS Cadena
     (13) TABLAS -> . Cadena
     (14) TABLAS -> . TABLAS Cadena AS Cadena
@@ -747,9 +795,23 @@ state 54
 
     Cadena          shift and go to state 17
 
-    TABLAS                         shift and go to state 70
+    TABLAS                         shift and go to state 75
 
-state 55
+state 58
+
+    (52) LEFT_JOIN -> LEFT JOIN . TABLAS ON CONDICION
+    (53) LEFT_JOIN -> LEFT JOIN . TABLAS ON CONDICION LEFT JOIN
+    (54) LEFT_JOIN -> LEFT JOIN . TABLAS ON CONDICION WHERE
+    (12) TABLAS -> . Cadena AS Cadena
+    (13) TABLAS -> . Cadena
+    (14) TABLAS -> . TABLAS Cadena AS Cadena
+    (15) TABLAS -> . TABLAS Cadena
+
+    Cadena          shift and go to state 17
+
+    TABLAS                         shift and go to state 76
+
+state 59
 
     (12) TABLAS -> Cadena AS Cadena .
 
@@ -760,132 +822,165 @@ state 55
     GROUP           reduce using rule 12 (TABLAS -> Cadena AS Cadena .)
     ORDER           reduce using rule 12 (TABLAS -> Cadena AS Cadena .)
     $end            reduce using rule 12 (TABLAS -> Cadena AS Cadena .)
+    Parentesis_Derecho reduce using rule 12 (TABLAS -> Cadena AS Cadena .)
     ON              reduce using rule 12 (TABLAS -> Cadena AS Cadena .)
-
-
-state 56
-
-    (4) _SELECT -> SELECT Fun_Res AS Comilla Cadena . Comilla
-
-    Comilla         shift and go to state 71
-
-
-state 57
-
-    (8) COLUMNA -> Cadena Punto Cadena AS . Comilla Cadena Comilla
-
-    Comilla         shift and go to state 72
-
-
-state 58
-
-    (18) Fun_Res -> MAX Parentesis_Izquierdo COLUMNA Parentesis_Derecho .
-
-    AS              reduce using rule 18 (Fun_Res -> MAX Parentesis_Izquierdo COLUMNA Parentesis_Derecho .)
-
-
-state 59
-
-    (19) Fun_Res -> MIN Parentesis_Izquierdo COLUMNA Parentesis_Derecho .
-
-    AS              reduce using rule 19 (Fun_Res -> MIN Parentesis_Izquierdo COLUMNA Parentesis_Derecho .)
 
 
 state 60
 
-    (20) Fun_Res -> COUNT Parentesis_Izquierdo COLUMNA Parentesis_Derecho .
+    (4) _SELECT -> SELECT Fun_Res AS Comilla Cadena . Comilla
 
-    AS              reduce using rule 20 (Fun_Res -> COUNT Parentesis_Izquierdo COLUMNA Parentesis_Derecho .)
+    Comilla         shift and go to state 77
 
 
 state 61
 
-    (21) Fun_Res -> COUNT Parentesis_Izquierdo DISTINCT COLUMNA . Parentesis_Derecho
+    (8) COLUMNA -> Cadena Punto Cadena AS . Comilla Cadena Comilla
 
-    Parentesis_Derecho shift and go to state 73
+    Comilla         shift and go to state 78
 
 
 state 62
 
-    (33) ORDER_BY -> ORDER BY . Cadena DESC
-    (34) ORDER_BY -> ORDER BY . Cadena ASC
-    (35) ORDER_BY -> ORDER BY . Cadena
+    (22) Fun_Res -> MAX Parentesis_Izquierdo COLUMNA Parentesis_Derecho .
 
-    Cadena          shift and go to state 74
+    AS              reduce using rule 22 (Fun_Res -> MAX Parentesis_Izquierdo COLUMNA Parentesis_Derecho .)
 
 
 state 63
 
-    (28) GROUP_BY -> GROUP BY COLUMNAS .
-    (29) GROUP_BY -> GROUP BY COLUMNAS . _HAVING
-    (31) _HAVING -> . HAVING CONDICION
-    (32) _HAVING -> .
+    (23) Fun_Res -> MIN Parentesis_Izquierdo COLUMNA Parentesis_Derecho .
 
-  ! reduce/reduce conflict for ORDER resolved using rule 28 (GROUP_BY -> GROUP BY COLUMNAS .)
-  ! reduce/reduce conflict for $end resolved using rule 28 (GROUP_BY -> GROUP BY COLUMNAS .)
-    ORDER           reduce using rule 28 (GROUP_BY -> GROUP BY COLUMNAS .)
-    $end            reduce using rule 28 (GROUP_BY -> GROUP BY COLUMNAS .)
-    HAVING          shift and go to state 76
+    AS              reduce using rule 23 (Fun_Res -> MIN Parentesis_Izquierdo COLUMNA Parentesis_Derecho .)
 
-  ! ORDER           [ reduce using rule 32 (_HAVING -> .) ]
-  ! $end            [ reduce using rule 32 (_HAVING -> .) ]
-
-    _HAVING                        shift and go to state 75
 
 state 64
 
-    (38) CONDICION -> COLUMNA SIGNO COLUMNA .
-    (40) CONDICION -> COLUMNA SIGNO COLUMNA . AND CONDICION
-    (42) CONDICION -> COLUMNA SIGNO COLUMNA . OR CONDICION
+    (24) Fun_Res -> COUNT Parentesis_Izquierdo COLUMNA Parentesis_Derecho .
 
-    GROUP           reduce using rule 38 (CONDICION -> COLUMNA SIGNO COLUMNA .)
-    ORDER           reduce using rule 38 (CONDICION -> COLUMNA SIGNO COLUMNA .)
-    $end            reduce using rule 38 (CONDICION -> COLUMNA SIGNO COLUMNA .)
-    INNER           reduce using rule 38 (CONDICION -> COLUMNA SIGNO COLUMNA .)
-    WHERE           reduce using rule 38 (CONDICION -> COLUMNA SIGNO COLUMNA .)
-    LEFT            reduce using rule 38 (CONDICION -> COLUMNA SIGNO COLUMNA .)
-    AND             shift and go to state 77
-    OR              shift and go to state 78
+    AS              reduce using rule 24 (Fun_Res -> COUNT Parentesis_Izquierdo COLUMNA Parentesis_Derecho .)
 
 
 state 65
 
-    (37) CONDICION -> COLUMNA SIGNO ALGO .
-    (39) CONDICION -> COLUMNA SIGNO ALGO . AND CONDICION
-    (41) CONDICION -> COLUMNA SIGNO ALGO . OR CONDICION
+    (25) Fun_Res -> COUNT Parentesis_Izquierdo DISTINCT COLUMNA . Parentesis_Derecho
 
-    GROUP           reduce using rule 37 (CONDICION -> COLUMNA SIGNO ALGO .)
-    ORDER           reduce using rule 37 (CONDICION -> COLUMNA SIGNO ALGO .)
-    $end            reduce using rule 37 (CONDICION -> COLUMNA SIGNO ALGO .)
-    INNER           reduce using rule 37 (CONDICION -> COLUMNA SIGNO ALGO .)
-    WHERE           reduce using rule 37 (CONDICION -> COLUMNA SIGNO ALGO .)
-    LEFT            reduce using rule 37 (CONDICION -> COLUMNA SIGNO ALGO .)
-    AND             shift and go to state 79
-    OR              shift and go to state 80
+    Parentesis_Derecho shift and go to state 79
 
 
 state 66
 
-    (43) ALGO -> numero .
+    (37) ORDER_BY -> ORDER BY . Cadena DESC
+    (38) ORDER_BY -> ORDER BY . Cadena ASC
+    (39) ORDER_BY -> ORDER BY . Cadena
 
-    AND             reduce using rule 43 (ALGO -> numero .)
-    OR              reduce using rule 43 (ALGO -> numero .)
-    GROUP           reduce using rule 43 (ALGO -> numero .)
-    ORDER           reduce using rule 43 (ALGO -> numero .)
-    $end            reduce using rule 43 (ALGO -> numero .)
-    INNER           reduce using rule 43 (ALGO -> numero .)
-    WHERE           reduce using rule 43 (ALGO -> numero .)
-    LEFT            reduce using rule 43 (ALGO -> numero .)
+    Cadena          shift and go to state 80
 
 
 state 67
 
-    (44) ALGO -> Comilla . Cadena Comilla
+    (32) GROUP_BY -> GROUP BY COLUMNAS .
+    (33) GROUP_BY -> GROUP BY COLUMNAS . _HAVING
+    (35) _HAVING -> . HAVING CONDICION
+    (36) _HAVING -> .
 
-    Cadena          shift and go to state 81
+  ! reduce/reduce conflict for ORDER resolved using rule 32 (GROUP_BY -> GROUP BY COLUMNAS .)
+  ! reduce/reduce conflict for $end resolved using rule 32 (GROUP_BY -> GROUP BY COLUMNAS .)
+  ! reduce/reduce conflict for Parentesis_Derecho resolved using rule 32 (GROUP_BY -> GROUP BY COLUMNAS .)
+    ORDER           reduce using rule 32 (GROUP_BY -> GROUP BY COLUMNAS .)
+    $end            reduce using rule 32 (GROUP_BY -> GROUP BY COLUMNAS .)
+    Parentesis_Derecho reduce using rule 32 (GROUP_BY -> GROUP BY COLUMNAS .)
+    HAVING          shift and go to state 82
 
+  ! ORDER           [ reduce using rule 36 (_HAVING -> .) ]
+  ! $end            [ reduce using rule 36 (_HAVING -> .) ]
+  ! Parentesis_Derecho [ reduce using rule 36 (_HAVING -> .) ]
+
+    _HAVING                        shift and go to state 81
 
 state 68
+
+    (20) _IN -> IN Parentesis_Izquierdo . S Parentesis_Derecho
+    (1) S -> . _SELECT _FROM _WHERE GROUP_BY ORDER_BY
+    (2) _SELECT -> . SELECT COLUMNAS
+    (3) _SELECT -> . SELECT DISTINCT COLUMNAS
+    (4) _SELECT -> . SELECT Fun_Res AS Comilla Cadena Comilla
+
+    SELECT          shift and go to state 3
+
+    S                              shift and go to state 83
+    _SELECT                        shift and go to state 2
+
+state 69
+
+    (21) NOT_IN -> NOT IN . Parentesis_Izquierdo S Parentesis_Derecho
+
+    Parentesis_Izquierdo shift and go to state 84
+
+
+state 70
+
+    (42) CONDICION -> COLUMNA SIGNO COLUMNA .
+    (44) CONDICION -> COLUMNA SIGNO COLUMNA . AND CONDICION
+    (46) CONDICION -> COLUMNA SIGNO COLUMNA . OR CONDICION
+
+    IN              reduce using rule 42 (CONDICION -> COLUMNA SIGNO COLUMNA .)
+    NOT             reduce using rule 42 (CONDICION -> COLUMNA SIGNO COLUMNA .)
+    GROUP           reduce using rule 42 (CONDICION -> COLUMNA SIGNO COLUMNA .)
+    ORDER           reduce using rule 42 (CONDICION -> COLUMNA SIGNO COLUMNA .)
+    $end            reduce using rule 42 (CONDICION -> COLUMNA SIGNO COLUMNA .)
+    Parentesis_Derecho reduce using rule 42 (CONDICION -> COLUMNA SIGNO COLUMNA .)
+    INNER           reduce using rule 42 (CONDICION -> COLUMNA SIGNO COLUMNA .)
+    WHERE           reduce using rule 42 (CONDICION -> COLUMNA SIGNO COLUMNA .)
+    LEFT            reduce using rule 42 (CONDICION -> COLUMNA SIGNO COLUMNA .)
+    AND             shift and go to state 85
+    OR              shift and go to state 86
+
+
+state 71
+
+    (41) CONDICION -> COLUMNA SIGNO ALGO .
+    (43) CONDICION -> COLUMNA SIGNO ALGO . AND CONDICION
+    (45) CONDICION -> COLUMNA SIGNO ALGO . OR CONDICION
+
+    IN              reduce using rule 41 (CONDICION -> COLUMNA SIGNO ALGO .)
+    NOT             reduce using rule 41 (CONDICION -> COLUMNA SIGNO ALGO .)
+    GROUP           reduce using rule 41 (CONDICION -> COLUMNA SIGNO ALGO .)
+    ORDER           reduce using rule 41 (CONDICION -> COLUMNA SIGNO ALGO .)
+    $end            reduce using rule 41 (CONDICION -> COLUMNA SIGNO ALGO .)
+    Parentesis_Derecho reduce using rule 41 (CONDICION -> COLUMNA SIGNO ALGO .)
+    INNER           reduce using rule 41 (CONDICION -> COLUMNA SIGNO ALGO .)
+    WHERE           reduce using rule 41 (CONDICION -> COLUMNA SIGNO ALGO .)
+    LEFT            reduce using rule 41 (CONDICION -> COLUMNA SIGNO ALGO .)
+    AND             shift and go to state 87
+    OR              shift and go to state 88
+
+
+state 72
+
+    (47) ALGO -> numero .
+
+    AND             reduce using rule 47 (ALGO -> numero .)
+    OR              reduce using rule 47 (ALGO -> numero .)
+    IN              reduce using rule 47 (ALGO -> numero .)
+    NOT             reduce using rule 47 (ALGO -> numero .)
+    GROUP           reduce using rule 47 (ALGO -> numero .)
+    ORDER           reduce using rule 47 (ALGO -> numero .)
+    $end            reduce using rule 47 (ALGO -> numero .)
+    Parentesis_Derecho reduce using rule 47 (ALGO -> numero .)
+    INNER           reduce using rule 47 (ALGO -> numero .)
+    WHERE           reduce using rule 47 (ALGO -> numero .)
+    LEFT            reduce using rule 47 (ALGO -> numero .)
+
+
+state 73
+
+    (48) ALGO -> Comilla . Cadena Comilla
+
+    Cadena          shift and go to state 89
+
+
+state 74
 
     (14) TABLAS -> TABLAS Cadena AS Cadena .
 
@@ -896,327 +991,387 @@ state 68
     GROUP           reduce using rule 14 (TABLAS -> TABLAS Cadena AS Cadena .)
     ORDER           reduce using rule 14 (TABLAS -> TABLAS Cadena AS Cadena .)
     $end            reduce using rule 14 (TABLAS -> TABLAS Cadena AS Cadena .)
+    Parentesis_Derecho reduce using rule 14 (TABLAS -> TABLAS Cadena AS Cadena .)
     ON              reduce using rule 14 (TABLAS -> TABLAS Cadena AS Cadena .)
 
 
-state 69
+state 75
 
-    (45) INNER_JOIN -> INNER JOIN TABLAS . ON CONDICION
-    (46) INNER_JOIN -> INNER JOIN TABLAS . ON CONDICION INNER JOIN
-    (47) INNER_JOIN -> INNER JOIN TABLAS . ON CONDICION WHERE
+    (49) INNER_JOIN -> INNER JOIN TABLAS . ON CONDICION
+    (50) INNER_JOIN -> INNER JOIN TABLAS . ON CONDICION INNER JOIN
+    (51) INNER_JOIN -> INNER JOIN TABLAS . ON CONDICION WHERE
     (14) TABLAS -> TABLAS . Cadena AS Cadena
     (15) TABLAS -> TABLAS . Cadena
 
-    ON              shift and go to state 82
+    ON              shift and go to state 90
     Cadena          shift and go to state 31
 
 
-state 70
+state 76
 
-    (48) LEFT_JOIN -> LEFT JOIN TABLAS . ON CONDICION
-    (49) LEFT_JOIN -> LEFT JOIN TABLAS . ON CONDICION LEFT JOIN
-    (50) LEFT_JOIN -> LEFT JOIN TABLAS . ON CONDICION WHERE
+    (52) LEFT_JOIN -> LEFT JOIN TABLAS . ON CONDICION
+    (53) LEFT_JOIN -> LEFT JOIN TABLAS . ON CONDICION LEFT JOIN
+    (54) LEFT_JOIN -> LEFT JOIN TABLAS . ON CONDICION WHERE
     (14) TABLAS -> TABLAS . Cadena AS Cadena
     (15) TABLAS -> TABLAS . Cadena
 
-    ON              shift and go to state 83
+    ON              shift and go to state 91
     Cadena          shift and go to state 31
 
 
-state 71
+state 77
 
     (4) _SELECT -> SELECT Fun_Res AS Comilla Cadena Comilla .
 
     FROM            reduce using rule 4 (_SELECT -> SELECT Fun_Res AS Comilla Cadena Comilla .)
 
 
-state 72
+state 78
 
     (8) COLUMNA -> Cadena Punto Cadena AS Comilla . Cadena Comilla
 
-    Cadena          shift and go to state 84
+    Cadena          shift and go to state 92
 
-
-state 73
-
-    (21) Fun_Res -> COUNT Parentesis_Izquierdo DISTINCT COLUMNA Parentesis_Derecho .
-
-    AS              reduce using rule 21 (Fun_Res -> COUNT Parentesis_Izquierdo DISTINCT COLUMNA Parentesis_Derecho .)
-
-
-state 74
-
-    (33) ORDER_BY -> ORDER BY Cadena . DESC
-    (34) ORDER_BY -> ORDER BY Cadena . ASC
-    (35) ORDER_BY -> ORDER BY Cadena .
-
-    DESC            shift and go to state 85
-    ASC             shift and go to state 86
-    $end            reduce using rule 35 (ORDER_BY -> ORDER BY Cadena .)
-
-
-state 75
-
-    (29) GROUP_BY -> GROUP BY COLUMNAS _HAVING .
-
-    ORDER           reduce using rule 29 (GROUP_BY -> GROUP BY COLUMNAS _HAVING .)
-    $end            reduce using rule 29 (GROUP_BY -> GROUP BY COLUMNAS _HAVING .)
-
-
-state 76
-
-    (31) _HAVING -> HAVING . CONDICION
-    (37) CONDICION -> . COLUMNA SIGNO ALGO
-    (38) CONDICION -> . COLUMNA SIGNO COLUMNA
-    (39) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
-    (40) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
-    (41) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
-    (42) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
-    (7) COLUMNA -> . Cadena Punto Cadena
-    (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
-
-    Cadena          shift and go to state 9
-
-    CONDICION                      shift and go to state 87
-    COLUMNA                        shift and go to state 28
-
-state 77
-
-    (40) CONDICION -> COLUMNA SIGNO COLUMNA AND . CONDICION
-    (37) CONDICION -> . COLUMNA SIGNO ALGO
-    (38) CONDICION -> . COLUMNA SIGNO COLUMNA
-    (39) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
-    (40) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
-    (41) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
-    (42) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
-    (7) COLUMNA -> . Cadena Punto Cadena
-    (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
-
-    Cadena          shift and go to state 9
-
-    COLUMNA                        shift and go to state 28
-    CONDICION                      shift and go to state 88
-
-state 78
-
-    (42) CONDICION -> COLUMNA SIGNO COLUMNA OR . CONDICION
-    (37) CONDICION -> . COLUMNA SIGNO ALGO
-    (38) CONDICION -> . COLUMNA SIGNO COLUMNA
-    (39) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
-    (40) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
-    (41) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
-    (42) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
-    (7) COLUMNA -> . Cadena Punto Cadena
-    (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
-
-    Cadena          shift and go to state 9
-
-    COLUMNA                        shift and go to state 28
-    CONDICION                      shift and go to state 89
 
 state 79
 
-    (39) CONDICION -> COLUMNA SIGNO ALGO AND . CONDICION
-    (37) CONDICION -> . COLUMNA SIGNO ALGO
-    (38) CONDICION -> . COLUMNA SIGNO COLUMNA
-    (39) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
-    (40) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
-    (41) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
-    (42) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
-    (7) COLUMNA -> . Cadena Punto Cadena
-    (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
+    (25) Fun_Res -> COUNT Parentesis_Izquierdo DISTINCT COLUMNA Parentesis_Derecho .
 
-    Cadena          shift and go to state 9
+    AS              reduce using rule 25 (Fun_Res -> COUNT Parentesis_Izquierdo DISTINCT COLUMNA Parentesis_Derecho .)
 
-    COLUMNA                        shift and go to state 28
-    CONDICION                      shift and go to state 90
 
 state 80
 
-    (41) CONDICION -> COLUMNA SIGNO ALGO OR . CONDICION
-    (37) CONDICION -> . COLUMNA SIGNO ALGO
-    (38) CONDICION -> . COLUMNA SIGNO COLUMNA
-    (39) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
-    (40) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
-    (41) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
-    (42) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
-    (7) COLUMNA -> . Cadena Punto Cadena
-    (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
+    (37) ORDER_BY -> ORDER BY Cadena . DESC
+    (38) ORDER_BY -> ORDER BY Cadena . ASC
+    (39) ORDER_BY -> ORDER BY Cadena .
 
-    Cadena          shift and go to state 9
+    DESC            shift and go to state 93
+    ASC             shift and go to state 94
+    $end            reduce using rule 39 (ORDER_BY -> ORDER BY Cadena .)
+    Parentesis_Derecho reduce using rule 39 (ORDER_BY -> ORDER BY Cadena .)
 
-    COLUMNA                        shift and go to state 28
-    CONDICION                      shift and go to state 91
 
 state 81
 
-    (44) ALGO -> Comilla Cadena . Comilla
+    (33) GROUP_BY -> GROUP BY COLUMNAS _HAVING .
 
-    Comilla         shift and go to state 92
+    ORDER           reduce using rule 33 (GROUP_BY -> GROUP BY COLUMNAS _HAVING .)
+    $end            reduce using rule 33 (GROUP_BY -> GROUP BY COLUMNAS _HAVING .)
+    Parentesis_Derecho reduce using rule 33 (GROUP_BY -> GROUP BY COLUMNAS _HAVING .)
 
 
 state 82
 
-    (45) INNER_JOIN -> INNER JOIN TABLAS ON . CONDICION
-    (46) INNER_JOIN -> INNER JOIN TABLAS ON . CONDICION INNER JOIN
-    (47) INNER_JOIN -> INNER JOIN TABLAS ON . CONDICION WHERE
-    (37) CONDICION -> . COLUMNA SIGNO ALGO
-    (38) CONDICION -> . COLUMNA SIGNO COLUMNA
-    (39) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
-    (40) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
-    (41) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
-    (42) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
+    (35) _HAVING -> HAVING . CONDICION
+    (41) CONDICION -> . COLUMNA SIGNO ALGO
+    (42) CONDICION -> . COLUMNA SIGNO COLUMNA
+    (43) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
+    (44) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
+    (45) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
+    (46) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
     (7) COLUMNA -> . Cadena Punto Cadena
     (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
 
     Cadena          shift and go to state 9
 
-    CONDICION                      shift and go to state 93
+    CONDICION                      shift and go to state 95
     COLUMNA                        shift and go to state 28
 
 state 83
 
-    (48) LEFT_JOIN -> LEFT JOIN TABLAS ON . CONDICION
-    (49) LEFT_JOIN -> LEFT JOIN TABLAS ON . CONDICION LEFT JOIN
-    (50) LEFT_JOIN -> LEFT JOIN TABLAS ON . CONDICION WHERE
-    (37) CONDICION -> . COLUMNA SIGNO ALGO
-    (38) CONDICION -> . COLUMNA SIGNO COLUMNA
-    (39) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
-    (40) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
-    (41) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
-    (42) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
+    (20) _IN -> IN Parentesis_Izquierdo S . Parentesis_Derecho
+
+    Parentesis_Derecho shift and go to state 96
+
+
+state 84
+
+    (21) NOT_IN -> NOT IN Parentesis_Izquierdo . S Parentesis_Derecho
+    (1) S -> . _SELECT _FROM _WHERE GROUP_BY ORDER_BY
+    (2) _SELECT -> . SELECT COLUMNAS
+    (3) _SELECT -> . SELECT DISTINCT COLUMNAS
+    (4) _SELECT -> . SELECT Fun_Res AS Comilla Cadena Comilla
+
+    SELECT          shift and go to state 3
+
+    S                              shift and go to state 97
+    _SELECT                        shift and go to state 2
+
+state 85
+
+    (44) CONDICION -> COLUMNA SIGNO COLUMNA AND . CONDICION
+    (41) CONDICION -> . COLUMNA SIGNO ALGO
+    (42) CONDICION -> . COLUMNA SIGNO COLUMNA
+    (43) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
+    (44) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
+    (45) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
+    (46) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
     (7) COLUMNA -> . Cadena Punto Cadena
     (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
 
     Cadena          shift and go to state 9
 
-    CONDICION                      shift and go to state 94
     COLUMNA                        shift and go to state 28
-
-state 84
-
-    (8) COLUMNA -> Cadena Punto Cadena AS Comilla Cadena . Comilla
-
-    Comilla         shift and go to state 95
-
-
-state 85
-
-    (33) ORDER_BY -> ORDER BY Cadena DESC .
-
-    $end            reduce using rule 33 (ORDER_BY -> ORDER BY Cadena DESC .)
-
+    CONDICION                      shift and go to state 98
 
 state 86
 
-    (34) ORDER_BY -> ORDER BY Cadena ASC .
+    (46) CONDICION -> COLUMNA SIGNO COLUMNA OR . CONDICION
+    (41) CONDICION -> . COLUMNA SIGNO ALGO
+    (42) CONDICION -> . COLUMNA SIGNO COLUMNA
+    (43) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
+    (44) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
+    (45) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
+    (46) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
+    (7) COLUMNA -> . Cadena Punto Cadena
+    (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
 
-    $end            reduce using rule 34 (ORDER_BY -> ORDER BY Cadena ASC .)
+    Cadena          shift and go to state 9
 
+    COLUMNA                        shift and go to state 28
+    CONDICION                      shift and go to state 99
 
 state 87
 
-    (31) _HAVING -> HAVING CONDICION .
+    (43) CONDICION -> COLUMNA SIGNO ALGO AND . CONDICION
+    (41) CONDICION -> . COLUMNA SIGNO ALGO
+    (42) CONDICION -> . COLUMNA SIGNO COLUMNA
+    (43) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
+    (44) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
+    (45) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
+    (46) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
+    (7) COLUMNA -> . Cadena Punto Cadena
+    (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
 
-    ORDER           reduce using rule 31 (_HAVING -> HAVING CONDICION .)
-    $end            reduce using rule 31 (_HAVING -> HAVING CONDICION .)
+    Cadena          shift and go to state 9
 
+    COLUMNA                        shift and go to state 28
+    CONDICION                      shift and go to state 100
 
 state 88
 
-    (40) CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .
+    (45) CONDICION -> COLUMNA SIGNO ALGO OR . CONDICION
+    (41) CONDICION -> . COLUMNA SIGNO ALGO
+    (42) CONDICION -> . COLUMNA SIGNO COLUMNA
+    (43) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
+    (44) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
+    (45) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
+    (46) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
+    (7) COLUMNA -> . Cadena Punto Cadena
+    (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
 
-    GROUP           reduce using rule 40 (CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .)
-    ORDER           reduce using rule 40 (CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .)
-    $end            reduce using rule 40 (CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .)
-    INNER           reduce using rule 40 (CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .)
-    WHERE           reduce using rule 40 (CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .)
-    LEFT            reduce using rule 40 (CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .)
+    Cadena          shift and go to state 9
 
+    COLUMNA                        shift and go to state 28
+    CONDICION                      shift and go to state 101
 
 state 89
 
-    (42) CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .
+    (48) ALGO -> Comilla Cadena . Comilla
 
-    GROUP           reduce using rule 42 (CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .)
-    ORDER           reduce using rule 42 (CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .)
-    $end            reduce using rule 42 (CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .)
-    INNER           reduce using rule 42 (CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .)
-    WHERE           reduce using rule 42 (CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .)
-    LEFT            reduce using rule 42 (CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .)
+    Comilla         shift and go to state 102
 
 
 state 90
 
-    (39) CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .
+    (49) INNER_JOIN -> INNER JOIN TABLAS ON . CONDICION
+    (50) INNER_JOIN -> INNER JOIN TABLAS ON . CONDICION INNER JOIN
+    (51) INNER_JOIN -> INNER JOIN TABLAS ON . CONDICION WHERE
+    (41) CONDICION -> . COLUMNA SIGNO ALGO
+    (42) CONDICION -> . COLUMNA SIGNO COLUMNA
+    (43) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
+    (44) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
+    (45) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
+    (46) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
+    (7) COLUMNA -> . Cadena Punto Cadena
+    (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
 
-    GROUP           reduce using rule 39 (CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .)
-    ORDER           reduce using rule 39 (CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .)
-    $end            reduce using rule 39 (CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .)
-    INNER           reduce using rule 39 (CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .)
-    WHERE           reduce using rule 39 (CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .)
-    LEFT            reduce using rule 39 (CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .)
+    Cadena          shift and go to state 9
 
+    CONDICION                      shift and go to state 103
+    COLUMNA                        shift and go to state 28
 
 state 91
 
-    (41) CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .
+    (52) LEFT_JOIN -> LEFT JOIN TABLAS ON . CONDICION
+    (53) LEFT_JOIN -> LEFT JOIN TABLAS ON . CONDICION LEFT JOIN
+    (54) LEFT_JOIN -> LEFT JOIN TABLAS ON . CONDICION WHERE
+    (41) CONDICION -> . COLUMNA SIGNO ALGO
+    (42) CONDICION -> . COLUMNA SIGNO COLUMNA
+    (43) CONDICION -> . COLUMNA SIGNO ALGO AND CONDICION
+    (44) CONDICION -> . COLUMNA SIGNO COLUMNA AND CONDICION
+    (45) CONDICION -> . COLUMNA SIGNO ALGO OR CONDICION
+    (46) CONDICION -> . COLUMNA SIGNO COLUMNA OR CONDICION
+    (7) COLUMNA -> . Cadena Punto Cadena
+    (8) COLUMNA -> . Cadena Punto Cadena AS Comilla Cadena Comilla
 
-    GROUP           reduce using rule 41 (CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .)
-    ORDER           reduce using rule 41 (CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .)
-    $end            reduce using rule 41 (CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .)
-    INNER           reduce using rule 41 (CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .)
-    WHERE           reduce using rule 41 (CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .)
-    LEFT            reduce using rule 41 (CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .)
+    Cadena          shift and go to state 9
 
+    CONDICION                      shift and go to state 104
+    COLUMNA                        shift and go to state 28
 
 state 92
 
-    (44) ALGO -> Comilla Cadena Comilla .
+    (8) COLUMNA -> Cadena Punto Cadena AS Comilla Cadena . Comilla
 
-    AND             reduce using rule 44 (ALGO -> Comilla Cadena Comilla .)
-    OR              reduce using rule 44 (ALGO -> Comilla Cadena Comilla .)
-    GROUP           reduce using rule 44 (ALGO -> Comilla Cadena Comilla .)
-    ORDER           reduce using rule 44 (ALGO -> Comilla Cadena Comilla .)
-    $end            reduce using rule 44 (ALGO -> Comilla Cadena Comilla .)
-    INNER           reduce using rule 44 (ALGO -> Comilla Cadena Comilla .)
-    WHERE           reduce using rule 44 (ALGO -> Comilla Cadena Comilla .)
-    LEFT            reduce using rule 44 (ALGO -> Comilla Cadena Comilla .)
+    Comilla         shift and go to state 105
 
 
 state 93
 
-    (45) INNER_JOIN -> INNER JOIN TABLAS ON CONDICION .
-    (46) INNER_JOIN -> INNER JOIN TABLAS ON CONDICION . INNER JOIN
-    (47) INNER_JOIN -> INNER JOIN TABLAS ON CONDICION . WHERE
+    (37) ORDER_BY -> ORDER BY Cadena DESC .
 
-  ! shift/reduce conflict for WHERE resolved as shift
-    GROUP           reduce using rule 45 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION .)
-    ORDER           reduce using rule 45 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION .)
-    $end            reduce using rule 45 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION .)
-    INNER           shift and go to state 96
-    WHERE           shift and go to state 97
-
-  ! WHERE           [ reduce using rule 45 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION .) ]
+    $end            reduce using rule 37 (ORDER_BY -> ORDER BY Cadena DESC .)
+    Parentesis_Derecho reduce using rule 37 (ORDER_BY -> ORDER BY Cadena DESC .)
 
 
 state 94
 
-    (48) LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION .
-    (49) LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION . LEFT JOIN
-    (50) LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION . WHERE
+    (38) ORDER_BY -> ORDER BY Cadena ASC .
 
-  ! shift/reduce conflict for WHERE resolved as shift
-    GROUP           reduce using rule 48 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION .)
-    ORDER           reduce using rule 48 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION .)
-    $end            reduce using rule 48 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION .)
-    LEFT            shift and go to state 98
-    WHERE           shift and go to state 99
-
-  ! WHERE           [ reduce using rule 48 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION .) ]
+    $end            reduce using rule 38 (ORDER_BY -> ORDER BY Cadena ASC .)
+    Parentesis_Derecho reduce using rule 38 (ORDER_BY -> ORDER BY Cadena ASC .)
 
 
 state 95
+
+    (35) _HAVING -> HAVING CONDICION .
+
+    ORDER           reduce using rule 35 (_HAVING -> HAVING CONDICION .)
+    $end            reduce using rule 35 (_HAVING -> HAVING CONDICION .)
+    Parentesis_Derecho reduce using rule 35 (_HAVING -> HAVING CONDICION .)
+
+
+state 96
+
+    (20) _IN -> IN Parentesis_Izquierdo S Parentesis_Derecho .
+
+    GROUP           reduce using rule 20 (_IN -> IN Parentesis_Izquierdo S Parentesis_Derecho .)
+    ORDER           reduce using rule 20 (_IN -> IN Parentesis_Izquierdo S Parentesis_Derecho .)
+    $end            reduce using rule 20 (_IN -> IN Parentesis_Izquierdo S Parentesis_Derecho .)
+    Parentesis_Derecho reduce using rule 20 (_IN -> IN Parentesis_Izquierdo S Parentesis_Derecho .)
+
+
+state 97
+
+    (21) NOT_IN -> NOT IN Parentesis_Izquierdo S . Parentesis_Derecho
+
+    Parentesis_Derecho shift and go to state 106
+
+
+state 98
+
+    (44) CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .
+
+    IN              reduce using rule 44 (CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .)
+    NOT             reduce using rule 44 (CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .)
+    GROUP           reduce using rule 44 (CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .)
+    ORDER           reduce using rule 44 (CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .)
+    $end            reduce using rule 44 (CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .)
+    Parentesis_Derecho reduce using rule 44 (CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .)
+    INNER           reduce using rule 44 (CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .)
+    WHERE           reduce using rule 44 (CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .)
+    LEFT            reduce using rule 44 (CONDICION -> COLUMNA SIGNO COLUMNA AND CONDICION .)
+
+
+state 99
+
+    (46) CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .
+
+    IN              reduce using rule 46 (CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .)
+    NOT             reduce using rule 46 (CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .)
+    GROUP           reduce using rule 46 (CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .)
+    ORDER           reduce using rule 46 (CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .)
+    $end            reduce using rule 46 (CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .)
+    Parentesis_Derecho reduce using rule 46 (CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .)
+    INNER           reduce using rule 46 (CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .)
+    WHERE           reduce using rule 46 (CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .)
+    LEFT            reduce using rule 46 (CONDICION -> COLUMNA SIGNO COLUMNA OR CONDICION .)
+
+
+state 100
+
+    (43) CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .
+
+    IN              reduce using rule 43 (CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .)
+    NOT             reduce using rule 43 (CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .)
+    GROUP           reduce using rule 43 (CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .)
+    ORDER           reduce using rule 43 (CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .)
+    $end            reduce using rule 43 (CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .)
+    Parentesis_Derecho reduce using rule 43 (CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .)
+    INNER           reduce using rule 43 (CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .)
+    WHERE           reduce using rule 43 (CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .)
+    LEFT            reduce using rule 43 (CONDICION -> COLUMNA SIGNO ALGO AND CONDICION .)
+
+
+state 101
+
+    (45) CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .
+
+    IN              reduce using rule 45 (CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .)
+    NOT             reduce using rule 45 (CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .)
+    GROUP           reduce using rule 45 (CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .)
+    ORDER           reduce using rule 45 (CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .)
+    $end            reduce using rule 45 (CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .)
+    Parentesis_Derecho reduce using rule 45 (CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .)
+    INNER           reduce using rule 45 (CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .)
+    WHERE           reduce using rule 45 (CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .)
+    LEFT            reduce using rule 45 (CONDICION -> COLUMNA SIGNO ALGO OR CONDICION .)
+
+
+state 102
+
+    (48) ALGO -> Comilla Cadena Comilla .
+
+    AND             reduce using rule 48 (ALGO -> Comilla Cadena Comilla .)
+    OR              reduce using rule 48 (ALGO -> Comilla Cadena Comilla .)
+    IN              reduce using rule 48 (ALGO -> Comilla Cadena Comilla .)
+    NOT             reduce using rule 48 (ALGO -> Comilla Cadena Comilla .)
+    GROUP           reduce using rule 48 (ALGO -> Comilla Cadena Comilla .)
+    ORDER           reduce using rule 48 (ALGO -> Comilla Cadena Comilla .)
+    $end            reduce using rule 48 (ALGO -> Comilla Cadena Comilla .)
+    Parentesis_Derecho reduce using rule 48 (ALGO -> Comilla Cadena Comilla .)
+    INNER           reduce using rule 48 (ALGO -> Comilla Cadena Comilla .)
+    WHERE           reduce using rule 48 (ALGO -> Comilla Cadena Comilla .)
+    LEFT            reduce using rule 48 (ALGO -> Comilla Cadena Comilla .)
+
+
+state 103
+
+    (49) INNER_JOIN -> INNER JOIN TABLAS ON CONDICION .
+    (50) INNER_JOIN -> INNER JOIN TABLAS ON CONDICION . INNER JOIN
+    (51) INNER_JOIN -> INNER JOIN TABLAS ON CONDICION . WHERE
+
+  ! shift/reduce conflict for WHERE resolved as shift
+    GROUP           reduce using rule 49 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION .)
+    ORDER           reduce using rule 49 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION .)
+    $end            reduce using rule 49 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION .)
+    Parentesis_Derecho reduce using rule 49 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION .)
+    INNER           shift and go to state 107
+    WHERE           shift and go to state 108
+
+  ! WHERE           [ reduce using rule 49 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION .) ]
+
+
+state 104
+
+    (52) LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION .
+    (53) LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION . LEFT JOIN
+    (54) LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION . WHERE
+
+  ! shift/reduce conflict for WHERE resolved as shift
+    GROUP           reduce using rule 52 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION .)
+    ORDER           reduce using rule 52 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION .)
+    $end            reduce using rule 52 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION .)
+    Parentesis_Derecho reduce using rule 52 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION .)
+    LEFT            shift and go to state 109
+    WHERE           shift and go to state 110
+
+  ! WHERE           [ reduce using rule 52 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION .) ]
+
+
+state 105
 
     (8) COLUMNA -> Cadena Punto Cadena AS Comilla Cadena Comilla .
 
@@ -1234,70 +1389,86 @@ state 95
     Parentesis_Derecho reduce using rule 8 (COLUMNA -> Cadena Punto Cadena AS Comilla Cadena Comilla .)
     AND             reduce using rule 8 (COLUMNA -> Cadena Punto Cadena AS Comilla Cadena Comilla .)
     OR              reduce using rule 8 (COLUMNA -> Cadena Punto Cadena AS Comilla Cadena Comilla .)
+    IN              reduce using rule 8 (COLUMNA -> Cadena Punto Cadena AS Comilla Cadena Comilla .)
+    NOT             reduce using rule 8 (COLUMNA -> Cadena Punto Cadena AS Comilla Cadena Comilla .)
     GROUP           reduce using rule 8 (COLUMNA -> Cadena Punto Cadena AS Comilla Cadena Comilla .)
     INNER           reduce using rule 8 (COLUMNA -> Cadena Punto Cadena AS Comilla Cadena Comilla .)
     WHERE           reduce using rule 8 (COLUMNA -> Cadena Punto Cadena AS Comilla Cadena Comilla .)
     LEFT            reduce using rule 8 (COLUMNA -> Cadena Punto Cadena AS Comilla Cadena Comilla .)
 
 
-state 96
+state 106
 
-    (46) INNER_JOIN -> INNER JOIN TABLAS ON CONDICION INNER . JOIN
+    (21) NOT_IN -> NOT IN Parentesis_Izquierdo S Parentesis_Derecho .
 
-    JOIN            shift and go to state 100
-
-
-state 97
-
-    (47) INNER_JOIN -> INNER JOIN TABLAS ON CONDICION WHERE .
-
-    WHERE           reduce using rule 47 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION WHERE .)
-    GROUP           reduce using rule 47 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION WHERE .)
-    ORDER           reduce using rule 47 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION WHERE .)
-    $end            reduce using rule 47 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION WHERE .)
+    GROUP           reduce using rule 21 (NOT_IN -> NOT IN Parentesis_Izquierdo S Parentesis_Derecho .)
+    ORDER           reduce using rule 21 (NOT_IN -> NOT IN Parentesis_Izquierdo S Parentesis_Derecho .)
+    $end            reduce using rule 21 (NOT_IN -> NOT IN Parentesis_Izquierdo S Parentesis_Derecho .)
+    Parentesis_Derecho reduce using rule 21 (NOT_IN -> NOT IN Parentesis_Izquierdo S Parentesis_Derecho .)
 
 
-state 98
+state 107
 
-    (49) LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION LEFT . JOIN
+    (50) INNER_JOIN -> INNER JOIN TABLAS ON CONDICION INNER . JOIN
 
-    JOIN            shift and go to state 101
-
-
-state 99
-
-    (50) LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION WHERE .
-
-    WHERE           reduce using rule 50 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION WHERE .)
-    GROUP           reduce using rule 50 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION WHERE .)
-    ORDER           reduce using rule 50 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION WHERE .)
-    $end            reduce using rule 50 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION WHERE .)
+    JOIN            shift and go to state 111
 
 
-state 100
+state 108
 
-    (46) INNER_JOIN -> INNER JOIN TABLAS ON CONDICION INNER JOIN .
+    (51) INNER_JOIN -> INNER JOIN TABLAS ON CONDICION WHERE .
 
-    WHERE           reduce using rule 46 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION INNER JOIN .)
-    GROUP           reduce using rule 46 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION INNER JOIN .)
-    ORDER           reduce using rule 46 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION INNER JOIN .)
-    $end            reduce using rule 46 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION INNER JOIN .)
+    WHERE           reduce using rule 51 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION WHERE .)
+    GROUP           reduce using rule 51 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION WHERE .)
+    ORDER           reduce using rule 51 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION WHERE .)
+    $end            reduce using rule 51 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION WHERE .)
+    Parentesis_Derecho reduce using rule 51 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION WHERE .)
 
 
-state 101
+state 109
 
-    (49) LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION LEFT JOIN .
+    (53) LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION LEFT . JOIN
 
-    WHERE           reduce using rule 49 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION LEFT JOIN .)
-    GROUP           reduce using rule 49 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION LEFT JOIN .)
-    ORDER           reduce using rule 49 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION LEFT JOIN .)
-    $end            reduce using rule 49 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION LEFT JOIN .)
+    JOIN            shift and go to state 112
+
+
+state 110
+
+    (54) LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION WHERE .
+
+    WHERE           reduce using rule 54 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION WHERE .)
+    GROUP           reduce using rule 54 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION WHERE .)
+    ORDER           reduce using rule 54 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION WHERE .)
+    $end            reduce using rule 54 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION WHERE .)
+    Parentesis_Derecho reduce using rule 54 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION WHERE .)
+
+
+state 111
+
+    (50) INNER_JOIN -> INNER JOIN TABLAS ON CONDICION INNER JOIN .
+
+    WHERE           reduce using rule 50 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION INNER JOIN .)
+    GROUP           reduce using rule 50 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION INNER JOIN .)
+    ORDER           reduce using rule 50 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION INNER JOIN .)
+    $end            reduce using rule 50 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION INNER JOIN .)
+    Parentesis_Derecho reduce using rule 50 (INNER_JOIN -> INNER JOIN TABLAS ON CONDICION INNER JOIN .)
+
+
+state 112
+
+    (53) LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION LEFT JOIN .
+
+    WHERE           reduce using rule 53 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION LEFT JOIN .)
+    GROUP           reduce using rule 53 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION LEFT JOIN .)
+    ORDER           reduce using rule 53 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION LEFT JOIN .)
+    $end            reduce using rule 53 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION LEFT JOIN .)
+    Parentesis_Derecho reduce using rule 53 (LEFT_JOIN -> LEFT JOIN TABLAS ON CONDICION LEFT JOIN .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for WHERE in state 93 resolved as shift
-WARNING: shift/reduce conflict for WHERE in state 94 resolved as shift
-WARNING: reduce/reduce conflict in state 63 resolved using rule (GROUP_BY -> GROUP BY COLUMNAS)
-WARNING: rejected rule (_HAVING -> <empty>) in state 63
+WARNING: shift/reduce conflict for WHERE in state 103 resolved as shift
+WARNING: shift/reduce conflict for WHERE in state 104 resolved as shift
+WARNING: reduce/reduce conflict in state 67 resolved using rule (GROUP_BY -> GROUP BY COLUMNAS)
+WARNING: rejected rule (_HAVING -> <empty>) in state 67
 WARNING: Rule (_HAVING -> <empty>) is never reduced

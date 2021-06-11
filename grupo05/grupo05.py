@@ -13,15 +13,14 @@ reservados = {
     'AS':'AS',
     'MIN':'MIN',
     'MAX':'MAX',
-    'AVG': 'AVG',
     'COUNT':'COUNT',
     'DISTINCT':'DISTINCT',
     'INNER':'INNER',
     'JOIN':'JOIN',
-    'ON':'ON',
     'LEFT':'LEFT',   
     'AND':'AND',
     'OR':'OR',
+    'ON':'ON',
     'IN':'IN',
     'NOT':'NOT',
     'IS':'IS',
@@ -132,7 +131,15 @@ def p_TABLAS(p):
 
 def p__WHERE(p):
     '''_WHERE : WHERE CONDICION
+              | WHERE CONDICION _IN
+              | WHERE CONDICION NOT_IN
               | '''
+
+def p_IN(p):
+    '''_IN : IN Parentesis_Izquierdo S Parentesis_Derecho'''
+
+def p_NOT_IN(p):
+    '''NOT_IN : NOT IN Parentesis_Izquierdo S Parentesis_Derecho'''
 
 def p_Fun_Res(p):
     '''Fun_Res : MAX Parentesis_Izquierdo COLUMNA Parentesis_Derecho
@@ -163,7 +170,7 @@ def p_ORDER_BY(p):
                 | ORDER BY Cadena
                 | '''
 
-def p_CONDICION(p):              # CAMBIAR EL ALGO
+def p_CONDICION(p):
     '''CONDICION : COLUMNA SIGNO ALGO  
                  | COLUMNA SIGNO COLUMNA
                  | COLUMNA SIGNO ALGO AND CONDICION
@@ -171,10 +178,9 @@ def p_CONDICION(p):              # CAMBIAR EL ALGO
                  | COLUMNA SIGNO ALGO OR CONDICION
                  | COLUMNA SIGNO COLUMNA OR CONDICION'''
 
-def p_ALGO(p): # cambiar nombre
+def p_ALGO(p): 
     '''ALGO : numero
             | Comilla Cadena Comilla''' 
-            #contemplar si esta igualado a una fecha
 
 def p_INNER_JOIN(p):
     '''INNER_JOIN : INNER JOIN TABLAS ON CONDICION
@@ -185,7 +191,6 @@ def p_LEFT_JOIN(p):
     '''LEFT_JOIN : LEFT JOIN TABLAS ON CONDICION
                  | LEFT JOIN TABLAS ON CONDICION LEFT JOIN
                  | LEFT JOIN TABLAS ON CONDICION WHERE'''
-
 
 def parse_select_statement(s):
     listaColumnas.clear()
